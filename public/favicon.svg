@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="8" fill="#15102a" stroke="#00f0ff" stroke-width="1.5"/>
+  <circle cx="16" cy="16" r="10" fill="none" stroke="#ff2a85" stroke-width="1.2" stroke-dasharray="2 1"/>
+  <text x="16" y="21" font-size="14" font-family="'Shippori Mincho', serif" font-weight="bold" fill="#00f0ff" text-anchor="middle">晴</text>
+</svg>
