@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { DOSSIER } from "@/data/dossier";
-import { Copy, Check, Mail, Github, Linkedin, ArrowUp } from "lucide-react";
+import { Copy, Check, Mail, Phone, Github, Linkedin, ArrowUp } from "lucide-react";
 import { zenAudio } from "@/lib/audio";
 
 export const ContactFooter: React.FC = () => {
@@ -134,7 +134,10 @@ export const ContactFooter: React.FC = () => {
             {/* Telephone Dispatch Card */}
             <div className="p-5 rounded-xl bg-[#fbf9f4] border border-[#181614]/12 hover:border-[#c82b2b]/40 transition-colors shadow-sm washi-card">
               <div className="flex items-center justify-between text-xs font-mono text-[#827b73] mb-2">
-                <span className="font-medium text-[#524d47]">TELEPHONE / VOICE DISPATCH</span>
+                <span className="flex items-center gap-1.5 text-[#524d47] font-medium">
+                  <Phone className="w-3.5 h-3.5 text-[#c82b2b]" />
+                  <span>TELEPHONE / VOICE DISPATCH</span>
+                </span>
                 <span>UTC+5:30</span>
               </div>
               <div className="flex items-center justify-between gap-4">

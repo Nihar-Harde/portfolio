@@ -46,7 +46,7 @@ Education: B.Tech CSE (Data Science), Ramdeobaba University (2023-2027) | CGPA: 
 Research: First-Author Accepted Paper in IEEE Xplore (OCIT 2026, Paper ID: 196) - Legal RAG System
 Patent: Lead Inventor, TNARE - Dynamic Logit Damping (IPO Mumbai, Form IPR-PAT-01 v1.1)
 Certifications: TiHAN IIT Hyderabad (Aerial Edge AI), JLPT N4 Japanese Certified
-Flagship Projects: Brief2Reel, LexMind, AutoATC, FMCG Supply Chain Lakehouse
+Flagship Projects: Brief2Reel, LexMind, AutoATC, UBIPr Iris Recognition, FMCG Lakehouse
 GitHub: ${personal.github} | LinkedIn: ${personal.linkedin}
     `.trim();
 

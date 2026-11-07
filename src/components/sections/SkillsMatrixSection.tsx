@@ -5,26 +5,103 @@ import { DOSSIER } from "@/data/dossier";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { SkillsVectorBackdrop } from "@/components/ui/VectorBackdrops";
 import { zenAudio } from "@/lib/audio";
-import { Code2, Bot, ScanEye, Server, Check } from "lucide-react";
+import {
+  Code2,
+  Bot,
+  ScanEye,
+  Server,
+  Workflow,
+  Cpu,
+  Database,
+  Terminal,
+  Layers,
+  Sparkles,
+  CheckCircle2,
+  X,
+  Compass,
+} from "lucide-react";
 
 export const SkillsMatrixSection: React.FC = () => {
   const { skillsMatrix } = DOSSIER;
-  const [activeSkill, setActiveSkill] = useState<string | null>(null);
+  const [selectedSkill, setSelectedSkill] = useState<{
+    name: string;
+    level: string;
+    domain: string;
+    domainKanji: string;
+  } | null>(null);
 
-  const getDomainIcon = (kanji: string) => {
-    switch (kanji) {
-      case "「言語」":
-        return <Code2 className="w-4 h-4 text-[#c82b2b]" />;
-      case "「自律型AI」":
-        return <Bot className="w-4 h-4 text-[#c59b48]" />;
-      case "「画像・深層学習」":
-        return <ScanEye className="w-4 h-4 text-[#c82b2b]" />;
-      case "「基盤工学」":
-        return <Server className="w-4 h-4 text-[#2e7d32]" />;
+  // Map each skill to authentic real-world project deployments
+  const getSkillDeployments = (skillName: string): string => {
+    switch (skillName) {
+      case "Python 3.12":
+        return "Core runtime for Brief2Reel, LexMind, AutoATC, and UBIPr Iris Recognition.";
+      case "SQL (PostgreSQL / Spark SQL)":
+        return "FMCG Medallion Lakehouse queries and Brief2Reel PostgreSQL persistence.";
+      case "TypeScript":
+        return "Full-stack portfolio architecture and interactive UI state orchestration.";
+      case "Java 21":
+        return "Enterprise microservice gateway and backend data structures exploration.";
+      case "Multi-Agent Pipelines":
+        return "Brief2Reel LangGraph orchestration (Copywriter → Visuals → TTS → Video → Critic).";
+      case "RAGAS Benchmark":
+        return "Empirical evaluation of LexMind trilingual legal retrieval (0.875 Faithfulness).";
+      case "ChromaDB & Vector RRF":
+        return "LexMind Reciprocal Rank Fusion and Brief2Reel prompt template retrieval.";
+      case "Groq LLaMA 3.3":
+        return "Sub-second inference director for Brief2Reel scripts and critic evaluations.";
+      case "Gemini APIs (1.5/2.0)":
+        return "Multimodal vision-language synthesis and high-fidelity keyframe generation.";
+      case "LangChain & LangGraph":
+        return "Deterministic stateful loops and RAG chains across legal & media pipelines.";
+      case "PyTorch":
+        return "Deep learning modeling and AutoATC pose regression pipeline.";
+      case "Ultralytics YOLOv8 Pose":
+        return "17 anatomical keypoint tracking in AutoATC (SIH 2025 Ministry Solution).";
+      case "OpenCV":
+        return "UBIPr Daugman polar rubber-sheet unrolling and AutoATC preprocessing.";
+      case "ONNX Runtime INT8":
+        return "Quantized edge CPU inference under 1.5s for dairy body condition scoring.";
+      case "LightGBM":
+        return "Calibrated tabular regression on skeletal angles for cattle BCS scoring.";
+      case "Edge CPU Optimization":
+        return "Low-power runtime execution without dedicated GPU hardware constraints.";
+      case "FastAPI":
+        return "High-throughput asynchronous API tiers for Brief2Reel and AutoATC.";
+      case "Databricks & Delta Lake":
+        return "Multi-hop Medallion architecture (Bronze → Silver → Gold) for supply chain.";
+      case "PySpark":
+        return "Distributed structured streaming and ETL transformations at scale.";
+      case "PostgreSQL":
+        return "ACID relational persistence for user tasks and pipeline event streams.";
+      case "Docker & Containerization":
+        return "Isolated reproducible microservice environments and CI testing.";
+      case "Git & CI/CD":
+        return "Trunk-based development, automated quality gates, and GitHub Actions.";
       default:
-        return <Code2 className="w-4 h-4 text-[#181614]" />;
+        return "Integrated across core engineering and research deployments.";
     }
   };
+
+  const getLevelBadgeClass = (level: string) => {
+    switch (level) {
+      case "Core":
+        return "bg-[#c82b2b]/10 text-[#c82b2b] border-[#c82b2b]/30 font-semibold";
+      case "Advanced":
+        return "bg-[#c59b48]/15 text-[#8a681c] border-[#c59b48]/35 font-medium";
+      case "Proficient":
+        return "bg-[#2e7d32]/10 text-[#2e7d32] border-[#2e7d32]/30 font-medium";
+      case "Exploring":
+      case "Familiar":
+        return "bg-[#827b73]/15 text-[#524d47] border-[#827b73]/30 font-medium";
+      default:
+        return "bg-[#181614]/5 text-[#524d47] border-[#181614]/10";
+    }
+  };
+
+  const agenticDomain = skillsMatrix.find((d) => d.domainKanji === "「自律型AI」");
+  const languagesDomain = skillsMatrix.find((d) => d.domainKanji === "「言語」");
+  const cvDomain = skillsMatrix.find((d) => d.domainKanji === "「画像・深層学習」");
+  const infraDomain = skillsMatrix.find((d) => d.domainKanji === "「基盤工学」");
 
   return (
     <section
@@ -40,103 +117,524 @@ export const SkillsMatrixSection: React.FC = () => {
       </div>
 
       {/* Section Header */}
-      <div className="relative z-10 max-w-7xl mx-auto mb-16">
+      <div className="relative z-10 max-w-7xl mx-auto mb-14">
         <div className="flex items-center gap-3 mb-3">
           <span className="text-sm font-japanese text-[#c82b2b] tracking-wider font-semibold">
             「技術体系」
           </span>
           <span className="h-[1px] w-8 bg-[#c82b2b]/40" />
           <span className="text-xs font-mono text-[#524d47] tracking-widest uppercase">
-            Engineering Taxonomy &amp; Proficiencies
+            Engineering Taxonomy &amp; Asymmetrical Bento Matrix
           </span>
         </div>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#181614] font-display">
-          Technical Competencies &amp; Craft
-        </h2>
-        <p className="mt-2 text-base text-[#524d47] max-w-2xl leading-relaxed">
-          Four specialized technical domains spanning foundational low-level systems to autonomous AI pipelines and hardware-accelerated computer vision.
-        </p>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#181614] font-display">
+              Technical Competencies &amp; Craft
+            </h2>
+            <p className="mt-2 text-base text-[#524d47] max-w-2xl leading-relaxed">
+              Four specialized technical domains spanning foundational low-level systems to autonomous AI pipelines and hardware-accelerated computer vision.
+            </p>
+          </div>
+
+          {/* Level Legend Pills */}
+          <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono p-2 rounded-lg bg-[#ede8de]/60 border border-[#181614]/10">
+            <span className="text-[#827b73] mr-1">TIERS:</span>
+            <span className="px-2 py-0.5 rounded border border-[#c82b2b]/30 bg-[#c82b2b]/10 text-[#c82b2b] font-medium">
+              Core
+            </span>
+            <span className="px-2 py-0.5 rounded border border-[#c59b48]/35 bg-[#c59b48]/15 text-[#8a681c] font-medium">
+              Advanced
+            </span>
+            <span className="px-2 py-0.5 rounded border border-[#2e7d32]/30 bg-[#2e7d32]/10 text-[#2e7d32] font-medium">
+              Proficient
+            </span>
+            <span className="px-2 py-0.5 rounded border border-[#827b73]/30 bg-[#827b73]/15 text-[#524d47] font-medium">
+              Exploring
+            </span>
+          </div>
+        </div>
       </div>
 
-      {/* 4 Domain Cards Grid */}
-      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {skillsMatrix.map((domain, idx) => (
+      {/* Asymmetrical Bento Grid */}
+      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
+        {/* ========================================================= */}
+        {/* BENTO TILE 1: Agentic AI & GenAI (Large Hero Span: 7 cols) */}
+        {/* ========================================================= */}
+        {agenticDomain && (
           <SpotlightCard
-            key={idx}
-            spotlightColor="rgba(200, 43, 43, 0.06)"
-            className="flex flex-col justify-between bg-[#fbf9f4]/95 border border-[#181614]/12 shadow-sm"
+            spotlightColor="rgba(200, 43, 43, 0.08)"
+            className="lg:col-span-7 md:col-span-2 flex flex-col justify-between bg-[#fbf9f4]/95 border border-[#181614]/12 shadow-sm washi-card"
           >
             <div>
-              {/* Domain Header */}
+              {/* Header */}
               <div className="flex items-center justify-between mb-4">
-                <span className="font-japanese text-sm text-[#c82b2b] font-semibold">
-                  {domain.domainKanji}
-                </span>
-                <div className="p-2 rounded-md bg-[#ede8de]/60 border border-[#181614]/10">
-                  {getDomainIcon(domain.domainKanji)}
+                <div className="flex items-center gap-2.5">
+                  <span className="font-japanese text-sm text-[#c82b2b] font-semibold">
+                    {agenticDomain.domainKanji}
+                  </span>
+                  <span className="text-xs font-mono text-[#827b73]">/</span>
+                  <span className="text-xs font-mono text-[#524d47] uppercase tracking-wider">
+                    Core Specialization
+                  </span>
+                </div>
+                <div className="p-2 rounded-md bg-[#ede8de]/60 border border-[#181614]/10 text-[#c82b2b]">
+                  <Bot className="w-4 h-4" />
                 </div>
               </div>
 
-              <h3 className="text-lg font-semibold text-[#181614] tracking-tight mb-1 font-display">
-                {domain.domainTitle}
+              <h3 className="text-xl sm:text-2xl font-semibold text-[#181614] tracking-tight mb-1 font-display">
+                {agenticDomain.domainTitle}
               </h3>
-              <p className="text-xs font-mono text-[#827b73] mb-4">
-                {domain.description}
+              <p className="text-xs font-mono text-[#827b73] mb-5">
+                {agenticDomain.description}
               </p>
 
-              {/* Skills List */}
-              <div className="space-y-2 mb-6">
-                {domain.skills.map((skill, sIdx) => {
-                  const isSelected = activeSkill === skill.name;
+              {/* Interactive Telemetry Flow Strip */}
+              <div className="p-3.5 rounded-lg bg-[#ede8de]/50 border border-[#181614]/10 mb-6">
+                <div className="flex items-center justify-between text-xs font-mono text-[#181614] mb-2.5">
+                  <span className="flex items-center gap-1.5 font-semibold text-[#c82b2b]">
+                    <Workflow className="w-3.5 h-3.5" />
+                    <span>Autonomous Reasoning &amp; Damping Loop</span>
+                  </span>
+                  <span className="text-[10px] text-[#2e7d32] font-semibold">TNARE + LangGraph</span>
+                </div>
+                <div className="grid grid-cols-4 gap-1.5 text-center text-[11px] font-mono">
+                  <div className="p-2 rounded bg-[#f6f3eb] border border-[#181614]/10">
+                    <span className="block text-[9px] text-[#827b73]">STEP 1</span>
+                    <span className="text-[#181614] truncate block">Perception</span>
+                  </div>
+                  <div className="p-2 rounded bg-[#f6f3eb] border border-[#181614]/10">
+                    <span className="block text-[9px] text-[#827b73]">STEP 2</span>
+                    <span className="text-[#181614] truncate block">Hybrid RRF</span>
+                  </div>
+                  <div className="p-2 rounded bg-[#f6f3eb] border border-[#181614]/10">
+                    <span className="block text-[9px] text-[#827b73]">STEP 3</span>
+                    <span className="text-[#c82b2b] truncate block font-medium">Logit Damp</span>
+                  </div>
+                  <div className="p-2 rounded bg-[#f6f3eb] border border-[#181614]/10">
+                    <span className="block text-[9px] text-[#827b73]">STEP 4</span>
+                    <span className="text-[#2e7d32] truncate block font-medium">Critic Fix</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Skill Matrix Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6">
+                {agenticDomain.skills.map((skill, sIdx) => {
+                  const isSelected = selectedSkill?.name === skill.name;
                   return (
                     <button
                       key={sIdx}
                       onClick={() => {
                         zenAudio.playWoodblock();
-                        setActiveSkill(isSelected ? null : skill.name);
+                        setSelectedSkill(
+                          isSelected
+                            ? null
+                            : {
+                                name: skill.name,
+                                level: skill.level,
+                                domain: agenticDomain.domainTitle,
+                                domainKanji: agenticDomain.domainKanji,
+                              }
+                        );
                       }}
-                      className={`w-full text-left p-2.5 rounded-md text-xs font-mono transition-all duration-200 flex items-center justify-between border ${
+                      className={`text-left p-2.5 rounded-md text-xs font-mono transition-all duration-200 flex items-center justify-between border ${
                         isSelected
-                          ? "bg-[#c82b2b]/10 border-[#c82b2b]/40 text-[#c82b2b] font-medium"
+                          ? "bg-[#c82b2b]/15 border-[#c82b2b] shadow-sm text-[#181614] font-medium"
                           : "bg-[#ede8de]/40 border-[#181614]/8 text-[#524d47] hover:bg-[#ede8de] hover:text-[#181614]"
                       }`}
                     >
-                      <span className="flex items-center gap-1.5">
+                      <span className="flex items-center gap-2 truncate">
                         {skill.highlight && (
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#c82b2b]" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#c82b2b] flex-shrink-0" />
                         )}
-                        <span>{skill.name}</span>
+                        <span className="truncate">{skill.name}</span>
                       </span>
-                      <span className="text-[10px] text-[#827b73]">{skill.level}</span>
+                      <span
+                        className={`text-[10px] px-2 py-0.5 rounded border flex-shrink-0 ${getLevelBadgeClass(
+                          skill.level
+                        )}`}
+                      >
+                        {skill.level}
+                      </span>
                     </button>
                   );
                 })}
               </div>
             </div>
 
-            {/* Actuation Focus Footnote */}
-            <div className="pt-4 border-t border-[#181614]/10 text-[11px] font-mono text-[#827b73]">
-              <span>VERIFIED PRODUCTION LEVEL</span>
+            {/* Footer Footnote */}
+            <div className="pt-4 border-t border-[#181614]/10 flex items-center justify-between text-[11px] font-mono text-[#827b73]">
+              <span>DEPLOYED: BRIEF2REEL • LEXMIND • TNARE PATENT</span>
+              <span className="text-[#c82b2b] font-medium">LEAD ARCHITECT</span>
             </div>
           </SpotlightCard>
-        ))}
+        )}
+
+        {/* ========================================================= */}
+        {/* BENTO TILE 2: Languages & Core (Compact Span: 5 cols)     */}
+        {/* ========================================================= */}
+        {languagesDomain && (
+          <SpotlightCard
+            spotlightColor="rgba(200, 43, 43, 0.06)"
+            className="lg:col-span-5 md:col-span-2 flex flex-col justify-between bg-[#fbf9f4]/95 border border-[#181614]/12 shadow-sm washi-card"
+          >
+            <div>
+              {/* Header */}
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2.5">
+                  <span className="font-japanese text-sm text-[#c82b2b] font-semibold">
+                    {languagesDomain.domainKanji}
+                  </span>
+                  <span className="text-xs font-mono text-[#827b73]">/</span>
+                  <span className="text-xs font-mono text-[#524d47] uppercase tracking-wider">
+                    Core Runtimes
+                  </span>
+                </div>
+                <div className="p-2 rounded-md bg-[#ede8de]/60 border border-[#181614]/10 text-[#c82b2b]">
+                  <Code2 className="w-4 h-4" />
+                </div>
+              </div>
+
+              <h3 className="text-xl sm:text-2xl font-semibold text-[#181614] tracking-tight mb-1 font-display">
+                {languagesDomain.domainTitle}
+              </h3>
+              <p className="text-xs font-mono text-[#827b73] mb-5">
+                {languagesDomain.description}
+              </p>
+
+              {/* Execution Profile Callout */}
+              <div className="p-3 rounded-lg bg-[#ede8de]/50 border border-[#181614]/10 mb-5 text-xs font-mono">
+                <div className="flex items-center justify-between text-[#181614] mb-1 font-semibold">
+                  <span className="flex items-center gap-1.5">
+                    <Terminal className="w-3.5 h-3.5 text-[#c82b2b]" />
+                    <span>Runtime Execution Profile</span>
+                  </span>
+                  <span className="text-[#8a681c] text-[10px]">Python 3.12 Primary</span>
+                </div>
+                <p className="text-[11px] text-[#524d47] leading-relaxed">
+                  Heavy asynchronous workloads &amp; mathematical models in Python; complex analytical aggregations in SQL; responsive frontend UI in TypeScript.
+                </p>
+              </div>
+
+              {/* Languages List */}
+              <div className="space-y-2.5 mb-6">
+                {languagesDomain.skills.map((skill, sIdx) => {
+                  const isSelected = selectedSkill?.name === skill.name;
+                  return (
+                    <button
+                      key={sIdx}
+                      onClick={() => {
+                        zenAudio.playWoodblock();
+                        setSelectedSkill(
+                          isSelected
+                            ? null
+                            : {
+                                name: skill.name,
+                                level: skill.level,
+                                domain: languagesDomain.domainTitle,
+                                domainKanji: languagesDomain.domainKanji,
+                              }
+                        );
+                      }}
+                      className={`w-full text-left p-3 rounded-md text-xs font-mono transition-all duration-200 flex items-center justify-between border ${
+                        isSelected
+                          ? "bg-[#c82b2b]/15 border-[#c82b2b] shadow-sm text-[#181614] font-medium"
+                          : "bg-[#ede8de]/40 border-[#181614]/8 text-[#524d47] hover:bg-[#ede8de] hover:text-[#181614]"
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        {skill.highlight ? (
+                          <span className="w-2 h-2 rounded-full bg-[#c82b2b]" />
+                        ) : (
+                          <span className="w-2 h-2 rounded-full bg-[#827b73]/40" />
+                        )}
+                        <span className="font-medium text-[#181614]">{skill.name}</span>
+                      </div>
+                      <span
+                        className={`text-[10px] px-2.5 py-0.5 rounded border ${getLevelBadgeClass(
+                          skill.level
+                        )}`}
+                      >
+                        {skill.level}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Footer Footnote */}
+            <div className="pt-4 border-t border-[#181614]/10 flex items-center justify-between text-[11px] font-mono text-[#827b73]">
+              <span>VERIFIED ENTERPRISE CODING</span>
+              <span className="text-[#2e7d32]">TYPE SAFE</span>
+            </div>
+          </SpotlightCard>
+        )}
+
+        {/* ========================================================= */}
+        {/* BENTO TILE 3: Computer Vision & Edge AI (Span: 6 cols)    */}
+        {/* ========================================================= */}
+        {cvDomain && (
+          <SpotlightCard
+            spotlightColor="rgba(200, 43, 43, 0.06)"
+            className="lg:col-span-6 md:col-span-1 flex flex-col justify-between bg-[#fbf9f4]/95 border border-[#181614]/12 shadow-sm washi-card"
+          >
+            <div>
+              {/* Header */}
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2.5">
+                  <span className="font-japanese text-sm text-[#c82b2b] font-semibold">
+                    {cvDomain.domainKanji}
+                  </span>
+                  <span className="text-xs font-mono text-[#827b73]">/</span>
+                  <span className="text-xs font-mono text-[#524d47] uppercase tracking-wider">
+                    Edge Inference
+                  </span>
+                </div>
+                <div className="p-2 rounded-md bg-[#ede8de]/60 border border-[#181614]/10 text-[#c82b2b]">
+                  <ScanEye className="w-4 h-4" />
+                </div>
+              </div>
+
+              <h3 className="text-xl sm:text-2xl font-semibold text-[#181614] tracking-tight mb-1 font-display">
+                {cvDomain.domainTitle}
+              </h3>
+              <p className="text-xs font-mono text-[#827b73] mb-5">
+                {cvDomain.description}
+              </p>
+
+              {/* Edge Inference Feature Strip */}
+              <div className="p-3.5 rounded-lg bg-[#ede8de]/50 border border-[#181614]/10 mb-6">
+                <div className="flex items-center justify-between text-xs font-mono text-[#181614] mb-2">
+                  <span className="flex items-center gap-1.5 font-semibold">
+                    <Cpu className="w-3.5 h-3.5 text-[#c82b2b]" />
+                    <span>Edge Acceleration Profile</span>
+                  </span>
+                  <span className="text-[#2e7d32] font-semibold">&lt; 1.5s CPU Latency</span>
+                </div>
+                <div className="grid grid-cols-3 gap-2 text-center text-xs font-mono">
+                  <div className="p-2 rounded bg-[#f6f3eb] border border-[#181614]/10">
+                    <span className="block text-[10px] text-[#827b73]">YOLOv8 POSE</span>
+                    <span className="text-[#181614]">17 Keypoints</span>
+                  </div>
+                  <div className="p-2 rounded bg-[#f6f3eb] border border-[#181614]/10">
+                    <span className="block text-[10px] text-[#827b73]">POLAR NORMAL</span>
+                    <span className="text-[#181614]">64×512 Strip</span>
+                  </div>
+                  <div className="p-2 rounded bg-[#f6f3eb] border border-[#181614]/10">
+                    <span className="block text-[10px] text-[#827b73]">QUANTIZATION</span>
+                    <span className="text-[#c82b2b] font-medium">ONNX INT8</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Skills Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6">
+                {cvDomain.skills.map((skill, sIdx) => {
+                  const isSelected = selectedSkill?.name === skill.name;
+                  return (
+                    <button
+                      key={sIdx}
+                      onClick={() => {
+                        zenAudio.playWoodblock();
+                        setSelectedSkill(
+                          isSelected
+                            ? null
+                            : {
+                                name: skill.name,
+                                level: skill.level,
+                                domain: cvDomain.domainTitle,
+                                domainKanji: cvDomain.domainKanji,
+                              }
+                        );
+                      }}
+                      className={`text-left p-2.5 rounded-md text-xs font-mono transition-all duration-200 flex items-center justify-between border ${
+                        isSelected
+                          ? "bg-[#c82b2b]/15 border-[#c82b2b] shadow-sm text-[#181614] font-medium"
+                          : "bg-[#ede8de]/40 border-[#181614]/8 text-[#524d47] hover:bg-[#ede8de] hover:text-[#181614]"
+                      }`}
+                    >
+                      <span className="flex items-center gap-2 truncate">
+                        {skill.highlight && (
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#c82b2b] flex-shrink-0" />
+                        )}
+                        <span className="truncate">{skill.name}</span>
+                      </span>
+                      <span
+                        className={`text-[10px] px-2 py-0.5 rounded border flex-shrink-0 ${getLevelBadgeClass(
+                          skill.level
+                        )}`}
+                      >
+                        {skill.level}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Footer Footnote */}
+            <div className="pt-4 border-t border-[#181614]/10 flex items-center justify-between text-[11px] font-mono text-[#827b73]">
+              <span>DEPLOYED: AUTOATC (SIH 2025) • UBIPR IRIS</span>
+              <span className="text-[#c82b2b] font-medium">95.4% RANK-1</span>
+            </div>
+          </SpotlightCard>
+        )}
+
+        {/* ========================================================= */}
+        {/* BENTO TILE 4: Systems & Data Infrastructure (Span: 6 cols)*/}
+        {/* ========================================================= */}
+        {infraDomain && (
+          <SpotlightCard
+            spotlightColor="rgba(200, 43, 43, 0.06)"
+            className="lg:col-span-6 md:col-span-1 flex flex-col justify-between bg-[#fbf9f4]/95 border border-[#181614]/12 shadow-sm washi-card"
+          >
+            <div>
+              {/* Header */}
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2.5">
+                  <span className="font-japanese text-sm text-[#c82b2b] font-semibold">
+                    {infraDomain.domainKanji}
+                  </span>
+                  <span className="text-xs font-mono text-[#827b73]">/</span>
+                  <span className="text-xs font-mono text-[#524d47] uppercase tracking-wider">
+                    Infrastructure &amp; ETL
+                  </span>
+                </div>
+                <div className="p-2 rounded-md bg-[#ede8de]/60 border border-[#181614]/10 text-[#2e7d32]">
+                  <Server className="w-4 h-4" />
+                </div>
+              </div>
+
+              <h3 className="text-xl sm:text-2xl font-semibold text-[#181614] tracking-tight mb-1 font-display">
+                {infraDomain.domainTitle}
+              </h3>
+              <p className="text-xs font-mono text-[#827b73] mb-5">
+                {infraDomain.description}
+              </p>
+
+              {/* Medallion Lakehouse Feature Strip */}
+              <div className="p-3.5 rounded-lg bg-[#ede8de]/50 border border-[#181614]/10 mb-6">
+                <div className="flex items-center justify-between text-xs font-mono text-[#181614] mb-2">
+                  <span className="flex items-center gap-1.5 font-semibold">
+                    <Database className="w-3.5 h-3.5 text-[#8a681c]" />
+                    <span>Medallion Lakehouse Architecture</span>
+                  </span>
+                  <span className="text-[#8a681c] font-semibold">ACID Delta Lake</span>
+                </div>
+                <div className="grid grid-cols-3 gap-2 text-center text-xs font-mono">
+                  <div className="p-2 rounded bg-[#f6f3eb] border border-[#181614]/10">
+                    <span className="block text-[10px] text-[#827b73]">BRONZE</span>
+                    <span className="text-[#181614]">Raw Stream</span>
+                  </div>
+                  <div className="p-2 rounded bg-[#f6f3eb] border border-[#181614]/10">
+                    <span className="block text-[10px] text-[#827b73]">SILVER</span>
+                    <span className="text-[#181614]">Clean &amp; Quarantined</span>
+                  </div>
+                  <div className="p-2 rounded bg-[#f6f3eb] border border-[#181614]/10">
+                    <span className="block text-[10px] text-[#827b73]">GOLD</span>
+                    <span className="text-[#c82b2b] font-medium">Aggregated Star</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Skills Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6">
+                {infraDomain.skills.map((skill, sIdx) => {
+                  const isSelected = selectedSkill?.name === skill.name;
+                  return (
+                    <button
+                      key={sIdx}
+                      onClick={() => {
+                        zenAudio.playWoodblock();
+                        setSelectedSkill(
+                          isSelected
+                            ? null
+                            : {
+                                name: skill.name,
+                                level: skill.level,
+                                domain: infraDomain.domainTitle,
+                                domainKanji: infraDomain.domainKanji,
+                              }
+                        );
+                      }}
+                      className={`text-left p-2.5 rounded-md text-xs font-mono transition-all duration-200 flex items-center justify-between border ${
+                        isSelected
+                          ? "bg-[#c82b2b]/15 border-[#c82b2b] shadow-sm text-[#181614] font-medium"
+                          : "bg-[#ede8de]/40 border-[#181614]/8 text-[#524d47] hover:bg-[#ede8de] hover:text-[#181614]"
+                      }`}
+                    >
+                      <span className="flex items-center gap-2 truncate">
+                        {skill.highlight && (
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#c82b2b] flex-shrink-0" />
+                        )}
+                        <span className="truncate">{skill.name}</span>
+                      </span>
+                      <span
+                        className={`text-[10px] px-2 py-0.5 rounded border flex-shrink-0 ${getLevelBadgeClass(
+                          skill.level
+                        )}`}
+                      >
+                        {skill.level}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Footer Footnote */}
+            <div className="pt-4 border-t border-[#181614]/10 flex items-center justify-between text-[11px] font-mono text-[#827b73]">
+              <span>DEPLOYED: FMCG LAKEHOUSE • FASTAPI MICROSERVICES</span>
+              <span className="text-[#2e7d32]">DISTRIBUTED</span>
+            </div>
+          </SpotlightCard>
+        )}
       </div>
 
-      {/* Interactive Active Skill Inspector Drawer */}
-      {activeSkill && (
-        <div className="relative z-10 max-w-7xl mx-auto mt-6 p-4 rounded-lg bg-[#ede8de]/70 border border-[#181614]/12 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <span className="hanko-stamp px-2 py-0.5 text-xs">特技</span>
-            <span className="text-xs font-mono text-[#181614]">
-              Active Skill Selected: <strong className="text-[#c82b2b]">{activeSkill}</strong>
-            </span>
+      {/* Interactive Active Skill Telemetry Drawer */}
+      {selectedSkill && (
+        <div className="relative z-10 max-w-7xl mx-auto mt-6 p-4 sm:p-5 rounded-xl bg-[#fbf9f4] border border-[#c82b2b]/40 shadow-sm washi-card animate-fade-in flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+            <div className="flex items-center gap-2">
+              <span className="hanko-stamp px-2 py-0.5 text-xs font-semibold">特技</span>
+              <span className="text-xs font-mono text-[#827b73]">
+                {selectedSkill.domainKanji} {selectedSkill.domain}
+              </span>
+            </div>
+            <span className="hidden sm:inline text-[#827b73]">•</span>
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-semibold text-[#181614] font-display">
+                {selectedSkill.name}
+              </span>
+              <span
+                className={`text-[10px] px-2 py-0.5 rounded border ${getLevelBadgeClass(
+                  selectedSkill.level
+                )}`}
+              >
+                {selectedSkill.level}
+              </span>
+            </div>
           </div>
-          <button
-            onClick={() => setActiveSkill(null)}
-            className="text-xs font-mono text-[#827b73] hover:text-[#181614]"
-          >
-            Clear Selection
-          </button>
+
+          <div className="flex items-center justify-between md:justify-end gap-4">
+            <p className="text-xs font-mono text-[#524d47] max-w-xl">
+              <strong className="text-[#181614]">Production Application:</strong>{" "}
+              {getSkillDeployments(selectedSkill.name)}
+            </p>
+            <button
+              onClick={() => {
+                zenAudio.playWoodblock();
+                setSelectedSkill(null);
+              }}
+              className="p-1.5 rounded-md hover:bg-[#ede8de] text-[#827b73] hover:text-[#181614] transition-colors flex-shrink-0"
+              aria-label="Clear selected skill"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       )}
     </section>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { zenAudio } from "@/lib/audio";
 import { cn } from "@/lib/utils";
 
@@ -12,13 +12,35 @@ export const TopNav: React.FC<TopNavProps> = ({ onOpenDossier }) => {
   const [activeSection, setActiveSection] = useState("hero");
   const [isMuted, setIsMuted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollYRef = useRef(0);
 
   useEffect(() => {
     setIsMuted(zenAudio.getMuted());
 
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      const currentScrollY = window.scrollY;
+      const lastScrollY = lastScrollYRef.current;
+      const scrollDelta = currentScrollY - lastScrollY;
+
+      setIsScrolled(currentScrollY > 50);
+
+      // Always show at top of page
+      if (currentScrollY <= 50) {
+        setIsVisible(true);
+      } 
+      // Scrolling down by more than 8px -> hide navigation
+      else if (scrollDelta > 8) {
+        setIsVisible(false);
+      } 
+      // Scrolling up by more than 8px -> reveal navigation
+      else if (scrollDelta < -8) {
+        setIsVisible(true);
+      }
+
+      lastScrollYRef.current = currentScrollY;
     };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     const observer = new IntersectionObserver(
@@ -29,7 +51,7 @@ export const TopNav: React.FC<TopNavProps> = ({ onOpenDossier }) => {
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.25 }
     );
 
     const sections = ["hero", "research-patent", "flagship-projects", "skills-matrix", "credentials", "contact"];
@@ -70,7 +92,15 @@ export const TopNav: React.FC<TopNavProps> = ({ onOpenDossier }) => {
   return (
     <nav
       aria-label="Primary Navigation"
-      className="fixed top-0 right-0 z-50 flex items-center justify-end px-6 sm:px-10 py-5 sm:py-6 bg-transparent pointer-events-auto transition-all duration-300"
+      className={cn(
+        "fixed top-0 right-0 z-50 flex items-center justify-end px-6 sm:px-10 transition-all duration-300 ease-in-out",
+        isVisible
+          ? "translate-y-0 opacity-100 pointer-events-auto"
+          : "-translate-y-full opacity-0 pointer-events-none",
+        isScrolled
+          ? "bg-[#f6f3eb]/90 backdrop-blur-md py-3.5 sm:py-4 border-b border-[#181614]/8 shadow-[0_4px_24px_rgba(24,22,20,0.04)]"
+          : "bg-transparent py-5 sm:py-6"
+      )}
     >
       <div className="flex items-center gap-5 sm:gap-7 text-xs sm:text-sm font-medium tracking-wide">
         {navItems.map((item) => {

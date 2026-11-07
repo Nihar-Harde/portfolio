@@ -16,6 +16,7 @@ import {
   Boxes,
   Database,
   Eye,
+  ScanEye,
 } from "lucide-react";
 
 export const ProjectsBentoSection: React.FC = () => {
@@ -28,7 +29,6 @@ export const ProjectsBentoSection: React.FC = () => {
     "Legal RAG",
     "Computer Vision & Edge AI",
     "Data Engineering",
-    "Deep Learning",
   ];
 
   const filteredProjects = DOSSIER.flagshipProjects.filter((p) =>
@@ -98,6 +98,7 @@ export const ProjectsBentoSection: React.FC = () => {
           const isBrief2Reel = project.id === "brief2reel";
           const isLexMind = project.id === "lexmind";
           const isAutoATC = project.id === "autoatc";
+          const isIrisRecognition = project.id === "iris-recognition";
 
           return (
             <SpotlightCard
@@ -189,6 +190,32 @@ export const ProjectsBentoSection: React.FC = () => {
                     <div className="flex items-center justify-between text-xs font-mono text-[#524d47]">
                       <span>Model: YOLOv8 INT8 Engine</span>
                       <span>Target: Jetson Nano</span>
+                    </div>
+                  </div>
+                )}
+
+                {isIrisRecognition && (
+                  <div className="p-3.5 rounded-lg bg-[#ede8de]/50 border border-[#181614]/10 mb-6">
+                    <div className="flex items-center justify-between text-xs font-mono text-[#181614] mb-2">
+                      <span className="flex items-center gap-1.5 font-semibold">
+                        <ScanEye className="w-3.5 h-3.5 text-[#c82b2b]" />
+                        <span>UBIPr Polar Normalization Engine</span>
+                      </span>
+                      <span className="text-[#2e7d32] font-semibold">95.4% Rank-1 Match</span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2 text-center text-xs font-mono">
+                      <div className="p-2 rounded bg-[#f6f3eb] border border-[#181614]/10">
+                        <span className="block text-[10px] text-[#827b73]">DUAL-EYE</span>
+                        <span className="text-[#181614]">64×512 Strip</span>
+                      </div>
+                      <div className="p-2 rounded bg-[#f6f3eb] border border-[#181614]/10">
+                        <span className="block text-[10px] text-[#827b73]">ENCODING</span>
+                        <span className="text-[#181614]">1024b Gabor</span>
+                      </div>
+                      <div className="p-2 rounded bg-[#f6f3eb] border border-[#181614]/10">
+                        <span className="block text-[10px] text-[#827b73]">LATENCY</span>
+                        <span className="text-[#c82b2b] font-medium">0.10ms (LBP)</span>
+                      </div>
                     </div>
                   </div>
                 )}

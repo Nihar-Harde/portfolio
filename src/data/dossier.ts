@@ -93,7 +93,7 @@ export interface CandidateDossier {
     description: string;
     skills: {
       name: string;
-      level: "Core" | "Advanced" | "Proficient";
+      level: "Core" | "Advanced" | "Proficient" | "Exploring" | "Familiar";
       highlight?: boolean;
     }[];
   }[];
@@ -273,27 +273,28 @@ export const DOSSIER: CandidateDossier = {
       githubUrl: "https://github.com/Nihar-Harde/AutoATC",
     },
     {
-      id: "fmcg-lakehouse",
-      title: "FMCG Supply Chain Lakehouse",
-      category: "Data Engineering",
-      categoryKanji: "「基盤工学」",
-      tagline: "Medallion enterprise data architecture (Bronze → Silver → Gold) on Databricks with PySpark.",
-      featured: false,
-      bentoSpan: "compact",
-      stack: ["Databricks", "PySpark", "Delta Lake", "Python", "SQL", "PowerBI"],
+      id: "iris-recognition",
+      title: "Dual-Eye Iris Biometric Recognition System",
+      category: "Computer Vision & Edge AI",
+      categoryKanji: "「画像・生体認証」",
+      tagline: "Research-grade dual-eye ocular biometric pipeline with Daugman polar rubber-sheet unrolling and multi-modal ensemble matching.",
+      featured: true,
+      bentoSpan: "large",
+      stack: ["Python 3.10+", "OpenCV", "Scikit-Learn", "Flask", "Gabor Wavelets", "Daugman Polar", "Spatial LBP", "SVM"],
       metrics: [
-        { label: "Architecture", value: "Medallion" },
-        { label: "Storage", value: "Delta Lake" },
-        { label: "Optimization", value: "Z-Order" },
+        { label: "Rank-1 Accuracy", value: "95.4%" },
+        { label: "Equal Error Rate", value: "2.0% EER" },
+        { label: "Matching Latency", value: "0.10 ms" },
       ],
       highlights: [
-        "Multi-hop ingestion stream enforcing ACID transactions on high-frequency FMCG inventory records.",
-        "Automated data quality quarantine checks at Silver tier to eliminate schema drift.",
-        "Gold aggregated dimensional models optimized for sub-second executive KPI reporting.",
+        "Dual Daugman polar rubber-sheet normalization unrolling annular Cartesian ocular regions into standardized 64x512 normalized templates.",
+        "Four distinct biometric matching architectures: Gabor Wavelets (1024-bit IrisCode with cyclic rotation compensation), Spatial Block LBP (4096-dim histogram with cosine metric), Multi-Filter Gabor Energy with Linear SVM, and score-level weighted ensemble fusion.",
+        "Benchmarked on official UBIPr visible wavelength dual-eye periocular dataset across 5,509 images and 261 subjects with leakage-safe cross-session evaluation protocols.",
+        "Completely decoupled biometric processing core with versioned REST API endpoints for identification and 1:1 verification.",
       ],
-      problemStatement: "Fragmented inventory data across regional distribution hubs caused inventory stockouts and delivery delays. This lakehouse unifies real-time transaction ingestion.",
-      architectureNotes: "PySpark structured streaming ingests raw JSON/CSV into Bronze Delta tables. Schema enforcement and deduplication produce clean Silver tables, aggregated into Gold dimensional star schemas.",
-      githubUrl: "https://github.com/Nihar-Harde/FMCG-SupplyChain-Lakehouse",
+      problemStatement: "Unconstrained visible-wavelength ocular biometrics suffer from non-uniform lighting, pupil dilation, ocular roll, and eyelash occlusions. This research prototype provides robust dual-eye normalization and multi-modal feature fusion to achieve high cross-session identification accuracy.",
+      architectureNotes: "Processes paired periocular images through a multi-stage pipeline: automated focus/contrast/clipping quality checks, dual iris segmentation, polar rubber-sheet unrolling into 64x512 pixel strips, Gabor wavelet phase quantization and spatial block LBP extraction, matched via cyclic rotation-compensated Hamming distance and calibrated LinearSVC decision margins.",
+      githubUrl: "https://github.com/Nihar-Harde/iris-recogintion-main",
     },
     {
       id: "customer-segmentation",
@@ -319,27 +320,27 @@ export const DOSSIER: CandidateDossier = {
       githubUrl: "https://github.com/Nihar-Harde/Customer-Segmentation-Analytics",
     },
     {
-      id: "probabilistic-deep-learning",
-      title: "Probabilistic Anomaly Detection",
-      category: "Deep Learning",
-      categoryKanji: "「深層学習」",
-      tagline: "Comparative generative architectures: Deterministic AE vs VAE (ELBO) vs RBM.",
+      id: "fmcg-lakehouse",
+      title: "FMCG Supply Chain Lakehouse",
+      category: "Data Engineering",
+      categoryKanji: "「基盤工学」",
+      tagline: "Medallion enterprise data architecture (Bronze → Silver → Gold) on Databricks with PySpark.",
       featured: false,
-      bentoSpan: "compact",
-      stack: ["PyTorch", "Torchvision", "NumPy", "Matplotlib"],
+      bentoSpan: "large",
+      stack: ["Databricks", "PySpark", "Delta Lake", "Python", "SQL", "PowerBI"],
       metrics: [
-        { label: "Models", value: "AE vs VAE vs RBM" },
-        { label: "Loss", value: "ELBO / KL" },
-        { label: "Sampling", value: "Contrastive Div." },
+        { label: "Architecture", value: "Medallion" },
+        { label: "Storage", value: "Delta Lake" },
+        { label: "Optimization", value: "Z-Order" },
       ],
       highlights: [
-        "Rigorous comparative study of generative latent manifolds under out-of-distribution perturbation.",
-        "Exact ELBO (Evidence Lower Bound) decomposition tracking reconstruction error vs KL divergence penalty.",
-        "Contrastive Divergence (CD-k) implementation for Restricted Boltzmann Machines with Gibbs sampling.",
+        "Multi-hop ingestion stream enforcing ACID transactions on high-frequency FMCG inventory records.",
+        "Automated data quality quarantine checks at Silver tier to eliminate schema drift.",
+        "Gold aggregated dimensional models optimized for sub-second executive KPI reporting.",
       ],
-      problemStatement: "Standard deterministic autoencoders struggle to quantify out-of-distribution uncertainty for high-consequence industrial anomalies.",
-      architectureNotes: "Built ground-up in PyTorch with custom loss functions and latent space t-SNE / PCA trajectory visualizers.",
-      githubUrl: "https://github.com/Nihar-Harde/Probabilistic-DeepLearning-Anomaly",
+      problemStatement: "Fragmented inventory data across regional distribution hubs caused inventory stockouts and delivery delays. This lakehouse unifies real-time transaction ingestion.",
+      architectureNotes: "PySpark structured streaming ingests raw JSON/CSV into Bronze Delta tables. Schema enforcement and deduplication produce clean Silver tables, aggregated into Gold dimensional star schemas.",
+      githubUrl: "https://github.com/Nihar-Harde/FMCG-SupplyChain-Lakehouse",
     },
   ],
   skillsMatrix: [
@@ -350,9 +351,8 @@ export const DOSSIER: CandidateDossier = {
       skills: [
         { name: "Python 3.12", level: "Core", highlight: true },
         { name: "SQL (PostgreSQL / Spark SQL)", level: "Core", highlight: true },
-        { name: "Java 21", level: "Advanced" },
-        { name: "C / C++", level: "Proficient" },
-        { name: "TypeScript", level: "Advanced" },
+        { name: "TypeScript", level: "Proficient" },
+        { name: "Java 21", level: "Exploring" },
       ],
     },
     {
