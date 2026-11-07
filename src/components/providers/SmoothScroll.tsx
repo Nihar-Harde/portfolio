@@ -25,12 +25,12 @@ export const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({ 
     }
 
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 0.95,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 1.05,
+      wheelMultiplier: 1.0,
     });
 
     lenis.on("scroll", ScrollTrigger.update);
@@ -91,30 +91,30 @@ export const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({ 
               ease: "power2.out",
               scrollTrigger: {
                 trigger: sec,
-                start: "top 85%",
-                end: "top 60%",
-                scrub: 0.8,
+                start: "top 95%",
+                end: "top 75%",
+                scrub: 0.5,
               },
             }
           );
         }
 
-        // 3. Dramatic Section Header Reveal
+        // 3. Crisp Section Header Reveal
         const heading = sec.querySelector("h2");
         const badge = sec.querySelector("div.flex.items-center.gap-3.mb-3");
         if (heading) {
           gsap.fromTo(
             heading,
-            { y: 35, opacity: 0 },
+            { y: 24, opacity: 0 },
             {
               y: 0,
               opacity: 1,
-              duration: 0.9,
-              ease: "power3.out",
+              duration: 0.5,
+              ease: "power2.out",
               scrollTrigger: {
                 trigger: heading,
-                start: "top 88%",
-                toggleActions: "play none none reverse",
+                start: "top 92%",
+                once: true,
               },
             }
           );
@@ -122,50 +122,59 @@ export const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({ 
         if (badge) {
           gsap.fromTo(
             badge,
-            { x: -25, opacity: 0 },
+            { x: -16, opacity: 0 },
             {
               x: 0,
               opacity: 1,
-              duration: 0.8,
+              duration: 0.45,
               ease: "power2.out",
               scrollTrigger: {
                 trigger: badge,
-                start: "top 90%",
-                toggleActions: "play none none reverse",
+                start: "top 94%",
+                once: true,
               },
             }
           );
         }
 
-        // 4. Staggered Elevation Reveal for Cards
-        const cards = sec.querySelectorAll(".spotlight-card, .washi-card");
-        if (cards.length > 0) {
+        // 4. Per-Card Crisp Elevation Reveal as each card enters the viewport
+        const cards = sec.querySelectorAll<HTMLElement>(".spotlight-card, .washi-card");
+        cards.forEach((card) => {
           gsap.fromTo(
-            cards,
-            { y: 45, opacity: 0, scale: 0.985 },
+            card,
+            { y: 22, opacity: 0 },
             {
               y: 0,
               opacity: 1,
-              scale: 1,
-              duration: 0.85,
-              stagger: 0.1,
+              duration: 0.5,
               ease: "power2.out",
               scrollTrigger: {
-                trigger: sec,
-                start: "top 75%",
-                toggleActions: "play none none reverse",
+                trigger: card,
+                start: "top 92%",
+                once: true,
               },
             }
           );
-        }
+        });
       });
+
+      // Synchronize trigger coordinates on initial load
+      ScrollTrigger.refresh();
     });
+
+    const handleThemeChange = () => {
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 60);
+    };
+    window.addEventListener("portfolio:theme-change", handleThemeChange);
 
     return () => {
       ctx.revert();
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("lenis:stop", handleStopLenis);
       window.removeEventListener("lenis:start", handleStartLenis);
+      window.removeEventListener("portfolio:theme-change", handleThemeChange);
       gsap.ticker.remove(updateLenis);
       lenis.destroy();
     };
@@ -174,11 +183,30 @@ export const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({ 
   return (
     <>
       {/* Top Kinetic Wabi-Sabi Lacquer Vermilion & Kintsugi Gold Scroll Progress Bar */}
-      <div
-        id="scroll-progress-bar"
-        className="fixed top-0 left-0 right-0 h-[2.5px] z-[100] pointer-events-none bg-gradient-to-r from-[#c82b2b] via-[#c59b48] to-[#181614] shadow-[0_1px_8px_rgba(200,43,43,0.5)] origin-left transition-transform duration-75"
-        style={{ transform: `scaleX(${scrollPercent})` }}
-      />
+      <div className="fixed top-0 left-0 right-0 h-[3px] z-[100] pointer-events-none overflow-visible">
+        {/* Track backdrop */}
+        <div className="absolute inset-0 bg-[#181614]/5 dark:bg-white/5" />
+        
+        {/* Vermilion Ink-Brush Bar with Organic Gradient */}
+        <div
+          id="scroll-progress-bar"
+          className="h-full bg-gradient-to-r from-[#8a1515] via-[#c82b2b] to-[#e07a3c] shadow-[0_1px_12px_rgba(200,43,43,0.6)] origin-left transition-transform duration-75 will-change-transform relative"
+          style={{ transform: `scaleX(${scrollPercent})` }}
+        />
+
+        {/* Leading Calligraphy Brush Tip & Kintsugi Spark */}
+        {scrollPercent > 0.005 && (
+          <div
+            className="absolute top-1/2 -translate-y-1/2 transition-transform duration-75 will-change-transform flex items-center justify-center pointer-events-none"
+            style={{ left: `${scrollPercent * 100}%` }}
+          >
+            {/* Ink Bloom Halo */}
+            <div className="absolute w-5 h-5 rounded-full bg-[#c82b2b]/30 blur-sm animate-pulse" />
+            {/* Brush Tip Droplet */}
+            <div className="w-2.5 h-2.5 rounded-full bg-[#c82b2b] border border-[#ffd700] shadow-[0_0_8px_rgba(200,43,43,0.8)]" />
+          </div>
+        )}
+      </div>
       {children}
     </>
   );

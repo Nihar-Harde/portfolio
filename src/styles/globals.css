@@ -31,6 +31,30 @@
   --font-japanese: 'Shippori Mincho', 'Zen Kaku Gothic New', serif;
 }
 
+html.dark,
+[data-theme="dark"] {
+  /* Sumi-e Charcoal Dark Mode Palette */
+  --bg-void: #121110;                 /* Deep ink-stone charcoal void */
+  --bg-surface: #1b1917;              /* Smoked paper surface */
+  --bg-card: rgba(26, 24, 22, 0.94);  /* Translucent dark washi card */
+  --bg-card-hover: rgba(34, 31, 28, 0.98);
+
+  /* Glowing Lacquer & Gilded Accents */
+  --ukiyo-vermilion: #e03e3e;         /* Glowing vermilion seal */
+  --ukiyo-crimson: #c82b2b;
+  --ukiyo-gold: #dfb15b;              /* Gilded kintsugi gold */
+  --ukiyo-pine: #455a47;
+
+  /* Bleached Calligraphy Washi Typography */
+  --text-primary: #f5f2eb;            /* Pure bleached washi silk white */
+  --text-secondary: #b8b2a7;          /* Soft silvery grey ink */
+  --text-muted: #78736a;              /* Weathered temple stone */
+
+  /* Borders & Dividers */
+  --border-subtle: rgba(245, 242, 235, 0.12);
+  --border-active: rgba(224, 62, 62, 0.6);
+}
+
 html {
   scroll-behavior: auto;
   background-color: var(--bg-void);
@@ -47,6 +71,35 @@ body {
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #121110;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #36322e;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #e03e3e;
+}
+
+html.dark ::selection {
+  background: rgba(224, 62, 62, 0.3);
+  color: #f5f2eb;
+}
+
+html.dark .washi-overlay {
+  opacity: 0.025;
+  filter: invert(1);
+}
+
+html.dark .washi-modal-container {
+  background-color: #171513;
+  border-color: rgba(245, 242, 235, 0.14);
+}
+
+html.dark .sumi-divider {
+  background: linear-gradient(90deg, transparent, rgba(245, 242, 235, 0.15) 20%, rgba(224, 62, 62, 0.4) 50%, rgba(245, 242, 235, 0.15) 80%, transparent);
 }
 
 /* Custom Japanese Minimalist Scrollbar */
@@ -68,6 +121,65 @@ body {
 ::selection {
   background: rgba(200, 43, 43, 0.18);
   color: #181614;
+}
+
+/* View Transitions API Customization with Sumi Ink-Wash Dissolve */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: 350ms cubic-bezier(0.4, 0, 0.2, 1) both ink-wash-out;
+}
+::view-transition-new(root) {
+  animation: 350ms cubic-bezier(0.4, 0, 0.2, 1) both ink-wash-in;
+}
+
+@keyframes ink-wash-in {
+  from {
+    opacity: 0;
+    filter: blur(4px) contrast(1.15);
+    transform: scale(0.995);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px) contrast(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes ink-wash-out {
+  from {
+    opacity: 1;
+    filter: blur(0px);
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    filter: blur(4px);
+    transform: scale(1.005);
+  }
+}
+
+/* Modal Ink-Wash Dissolve Entrance */
+.modal-ink-wash {
+  animation: modalInkWashEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalInkWashEnter {
+  0% {
+    opacity: 0;
+    transform: scale(0.97) translateY(8px);
+    filter: blur(6px);
+  }
+  50% {
+    filter: blur(1.5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0px);
+  }
 }
 
 /* Authentic Handmade Washi Paper Texture Overlay */
@@ -93,6 +205,52 @@ body {
   border-radius: 0.75rem;
   box-shadow: 0 4px 20px -2px rgba(24, 22, 20, 0.05), 0 2px 6px -1px rgba(24, 22, 20, 0.03);
   transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Kintsugi Gold Border Trace on Hover */
+@property --kintsugi-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes kintsugiSweep {
+  0% {
+    --kintsugi-angle: 0deg;
+  }
+  100% {
+    --kintsugi-angle: 360deg;
+  }
+}
+
+.kintsugi-trace {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--kintsugi-angle, 0deg) at 50% 50%,
+    transparent 0%,
+    transparent 75%,
+    rgba(197, 155, 72, 0.4) 86%,
+    #dfb15b 93%,
+    rgba(255, 230, 160, 0.95) 97%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.2, 0, 0, 1);
+  pointer-events: none;
+  animation: kintsugiSweep 4.5s linear infinite;
+  z-index: 5;
+}
+
+.spotlight-card:hover .kintsugi-trace,
+.washi-card:hover .kintsugi-trace {
+  opacity: 1;
 }
 
 /* Scrollable Wabi-Sabi Modal Container */
@@ -148,4 +306,9 @@ body {
 .katex {
   color: #181614 !important;
   font-size: 1.05em !important;
+}
+
+html.dark .katex,
+[data-theme="dark"] .katex {
+  color: #f5f2eb !important;
 }

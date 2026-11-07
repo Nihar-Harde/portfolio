@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "@/styles/globals.css";
 import "katex/dist/katex.min.css";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScroll";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 
 export const metadata: Metadata = {
   title: "Nihar Harde | Agentic AI & Edge Vision Engineer",
@@ -66,7 +67,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#f6f3eb] text-[#181614] selection:bg-[#c82b2b]/20 selection:text-[#c82b2b] antialiased min-h-screen relative overflow-x-hidden font-sans">
+      <body className="bg-[#f6f3eb] dark:bg-[#121110] text-[#181614] dark:text-[#f5f2eb] selection:bg-[#c82b2b]/20 selection:text-[#c82b2b] antialiased min-h-screen relative overflow-x-hidden font-sans transition-colors duration-300">
+        {/* Custom Sumi-Ink & Vermilion Trail Cursor */}
+        <CustomCursor />
+
         {/* Ambient Washi Paper Noise Overlay */}
         <div className="washi-overlay pointer-events-none" aria-hidden="true" />
         

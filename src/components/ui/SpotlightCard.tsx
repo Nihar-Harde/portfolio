@@ -74,6 +74,8 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
           maskComposite: "exclude",
         }}
       />
+      {/* Kintsugi Gold Border Tracing Effect */}
+      <div className="kintsugi-trace" aria-hidden="true" />
       <div className="relative z-10 h-full">{children}</div>
     </div>
   );

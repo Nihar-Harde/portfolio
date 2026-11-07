@@ -10,6 +10,10 @@ export const HeroCanvas: React.FC = () => {
 
   // Subtle mouse inertia parallax for the Ukiyo-e scenery
   useEffect(() => {
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
     let animationFrameId: number;
     let targetX = 0;
     let targetY = 0;
@@ -41,6 +45,10 @@ export const HeroCanvas: React.FC = () => {
 
   // Ambient Japanese Momiji (Autumn maple) & ink fleck particles drifting gently
   useEffect(() => {
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -152,14 +160,18 @@ export const HeroCanvas: React.FC = () => {
           transform: `translate3d(${mouseOffset.x}px, ${mouseOffset.y}px, 0) scale(1.02)`,
         }}
       >
-        <Image
-          src="/wabi-sabi-hero.jpg"
-          alt="Traditional Japanese Ukiyo-e Scenery with Mount Fuji, Red Hinomaru Sun, Mountain Pagoda and Crimson Maples"
-          fill
-          priority
-          unoptimized
-          className="object-cover object-right-top md:object-center opacity-95 select-none"
-        />
+        <picture className="block w-full h-full">
+          <source srcSet="/wabi-sabi-hero.avif" type="image/avif" />
+          <source srcSet="/wabi-sabi-hero.webp" type="image/webp" />
+          <img
+            src="/wabi-sabi-hero.jpg"
+            alt="Traditional Japanese Ukiyo-e Scenery with Mount Fuji, Red Hinomaru Sun, Mountain Pagoda and Crimson Maples"
+            className="w-full h-full object-cover object-right-top md:object-center opacity-95 select-none"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+          />
+        </picture>
       </div>
 
       {/* Atmospheric Seamless Washi Parchment Gradient Bridges */}

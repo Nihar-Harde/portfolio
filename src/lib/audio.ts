@@ -101,7 +101,16 @@ class ZenAudioManager {
       osc1.connect(filter);
       osc2.connect(filter);
       filter.connect(gain);
-      gain.connect(ctx.destination);
+
+      // StereoPannerNode with subtle ±0.15 randomization for binaural depth
+      if (typeof ctx.createStereoPanner === "function") {
+        const panner = ctx.createStereoPanner();
+        panner.pan.setValueAtTime((Math.random() * 0.3) - 0.15, now);
+        gain.connect(panner);
+        panner.connect(ctx.destination);
+      } else {
+        gain.connect(ctx.destination);
+      }
 
       osc1.start(now);
       osc2.start(now);
@@ -171,7 +180,14 @@ class ZenAudioManager {
       gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.015);
 
       osc.connect(gain);
-      gain.connect(ctx.destination);
+      if (typeof ctx.createStereoPanner === "function") {
+        const panner = ctx.createStereoPanner();
+        panner.pan.setValueAtTime((Math.random() * 0.2) - 0.1, now);
+        gain.connect(panner);
+        panner.connect(ctx.destination);
+      } else {
+        gain.connect(ctx.destination);
+      }
 
       osc.start(now);
       osc.stop(now + 0.02);
