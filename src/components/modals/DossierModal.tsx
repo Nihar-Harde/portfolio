@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { X, Copy, Check, Printer, ShieldCheck } from "lucide-react";
+import { X, Copy, Check, Printer, ShieldCheck, Download } from "lucide-react";
 import { DOSSIER } from "@/data/dossier";
 import { zenAudio } from "@/lib/audio";
 
@@ -108,19 +108,29 @@ GitHub: ${personal.github} | LinkedIn: ${personal.linkedin}
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
+            <a
+              href="/Nihar_Harde_Resume.pdf"
+              download="Nihar_Atul_Harde_Resume.pdf"
+              onClick={() => zenAudio.playWoodblock()}
+              className="flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-md bg-[#c82b2b] hover:bg-[#a81c1c] text-white text-xs font-mono transition-colors shadow-sm"
+              title="Download authenticated latest PDF resume"
+            >
+              <Download className="w-4 h-4" />
+              <span>Download PDF</span>
+            </a>
             <button
               onClick={handleCopySummary}
               className="flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-md bg-[#ede8de] dark:bg-[#23201c] hover:bg-[#ede8de]/80 border border-[#181614]/10 dark:border-white/10 text-xs font-mono text-[#181614] dark:text-[#f5f2eb] transition-colors"
             >
               {copied ? <Check className="w-4 h-4 text-[#2e7d32]" /> : <Copy className="w-4 h-4" />}
-              <span>{copied ? "Copied" : "Copy Dossier"}</span>
+              <span>{copied ? "Copied" : "Copy Text"}</span>
             </button>
             <button
               onClick={handlePrint}
-              className="flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-md bg-[#c82b2b] hover:bg-[#a81c1c] text-white text-xs font-mono transition-colors shadow-sm"
+              className="flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-md bg-[#ede8de] dark:bg-[#23201c] hover:bg-[#ede8de]/80 border border-[#181614]/10 dark:border-white/10 text-xs font-mono text-[#181614] dark:text-[#f5f2eb] transition-colors"
             >
               <Printer className="w-4 h-4" />
-              <span>Print / PDF</span>
+              <span>Print</span>
             </button>
           </div>
         </div>

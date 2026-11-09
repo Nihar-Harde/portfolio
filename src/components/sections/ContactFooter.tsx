@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { DOSSIER } from "@/data/dossier";
-import { Copy, Check, Mail, Phone, Github, Linkedin, ArrowUp } from "lucide-react";
+import { Copy, Check, Mail, Phone, Github, Linkedin, ArrowUp, Send } from "lucide-react";
 import { zenAudio } from "@/lib/audio";
 
 export const ContactFooter: React.FC = () => {
@@ -89,26 +89,37 @@ export const ContactFooter: React.FC = () => {
                 </span>
                 <span>DIRECT ACCESS</span>
               </div>
-              <div className="flex items-center justify-between gap-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <span className="font-mono text-sm sm:text-base text-[#181614] dark:text-[#f5f2eb] font-medium break-all">
                   {personal.personalEmail}
                 </span>
-                <button
-                  onClick={() => copyToClipboard(personal.personalEmail, "personal")}
-                  className="flex-shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#ede8de] dark:bg-[#25221e] hover:bg-[#c82b2b] text-[#181614] dark:text-[#f5f2eb] hover:text-white dark:hover:text-white text-xs font-mono transition-colors"
-                >
-                  {copiedEmail === "personal" ? (
-                    <>
-                      <Check className="w-3.5 h-3.5 text-[#2e7d32] dark:text-[#4ade80]" />
-                      <span>Copied</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-3.5 h-3.5" />
-                      <span>Copy</span>
-                    </>
-                  )}
-                </button>
+                <div className="flex items-center gap-2 flex-shrink-0">
+                  <a
+                    href={`mailto:${personal.personalEmail}?subject=[Collaboration%20/%20Role%20Inquiry]%20AI%20Engineering&body=Hi%20Nihar,%0D%0A%0D%0AI%20reviewed%20your%20portfolio%20and%20would%20like%20to%20connect%20regarding...`}
+                    onClick={() => zenAudio.playHoverTick()}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#c82b2b] hover:bg-[#a81c1c] text-white text-xs font-mono transition-colors shadow-xs"
+                    title="Send Email via Mail App"
+                  >
+                    <Send className="w-3.5 h-3.5" />
+                    <span>Send Email</span>
+                  </a>
+                  <button
+                    onClick={() => copyToClipboard(personal.personalEmail, "personal")}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#ede8de] dark:bg-[#25221e] hover:bg-[#c82b2b] text-[#181614] dark:text-[#f5f2eb] hover:text-white dark:hover:text-white text-xs font-mono transition-colors"
+                  >
+                    {copiedEmail === "personal" ? (
+                      <>
+                        <Check className="w-3.5 h-3.5 text-[#2e7d32] dark:text-[#4ade80]" />
+                        <span>Copied</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-3.5 h-3.5" />
+                        <span>Copy</span>
+                      </>
+                    )}
+                  </button>
+                </div>
               </div>
             </div>
 

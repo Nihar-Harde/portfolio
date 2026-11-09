@@ -1,0 +1,47 @@
+# Nihar Harde — Agentic AI & Edge Vision Engineer
+
+> Personal portfolio and machine-readable curriculum vitae for Nihar Atul Harde. Data Science undergraduate at Ramdeobaba University (RBU), Nagpur, specializing in autonomous multi-agent orchestration, real-time edge computer vision, and in-flight GPU tensor logit interception for hallucination suppression.
+
+## Primary Contact & Profiles
+- **Primary Email**: niharharde@gmail.com
+- **Institutional Email**: hardena@rknec.edu
+- **Location**: Nagpur, Maharashtra, India
+- **Phone**: +91-7888043666
+- **GitHub**: https://github.com/Nihar-Harde
+- **LinkedIn**: https://www.linkedin.com/in/nihar-harde-41480228a
+
+## Academic Foundation
+- **Institution**: Shri Ramdeobaba College of Engineering and Management (Ramdeobaba University - RBU), Nagpur
+- **Degree**: Bachelor of Technology (B.Tech) in Computer Science and Engineering (Data Science)
+- **Period**: August 2023 – May 2027
+- **CGPA**: 8.33 / 10.00
+- **Linguistic Certification**: Japanese Language Proficiency Test (JLPT) N4 Certified (日本語能力試験 N4)
+
+## Research Publications
+- **Paper Title**: Design and Implementation of a Legal Information Retrieval and Decision Support System Using RAG
+- **Authors**: Uma Yadav, Nihar Harde, Piyush Patle, et al.
+- **Conference**: 2026 24th OITS International Conference on Information Technology (OCIT), IEEE
+- **Indexing**: IEEE Xplore
+- **Key Contributions**:
+  - Trilingual dense-sparse hybrid retrieval (ChromaDB + BM25) across English, Hindi, and Marathi financial and statutory acts (SEBI, RBI, PMLA).
+  - Section-aware hierarchical document chunking preserving provisos and sub-clause references.
+  - Empirical evaluation with the RAGAS framework (0.875 Faithfulness, 0.892 Context Precision).
+
+## Patents & Intellectual Property
+- **Patent Title**: A System and Method for In-Flight Tensor Logit Regulation and Temporal Anti-Repetition in Autoregressive Sequence Generation (TNARE / EDLD)
+- **Lead Inventor**: Nihar Atul Harde
+- **Core Mechanism**: Real-time CUDA kernel tensor logit interception evaluating Shannon entropy $H(P_t)$ and penalizing repetitive n-gram token logits before softmax sampling without model retraining or parameter freezing.
+- **Benchmarks**: 31.2% repetition reduction, 24.8% latency reduction, 4.8% perplexity preservation across benchmark LLMs.
+
+## Flagship Engineering Projects
+- **Brief2Reel**: Multi-agent content orchestration pipeline converting raw product briefs into platform-optimized vertical reels (FastAPI, LangGraph, ChromaDB, Groq, Google Gemini API, PostgreSQL). Owned the backend/agent orchestration and deployed an LLM-as-a-judge Critic Agent with 5-dimension scoring and cosine anti-repetition guard (<0.85).
+- **Auto ATC**: Livestock computer vision and Body Condition Scoring (BCS) system benchmarked across 41 domestic bovine breeds (YOLOv8, OpenCV, LightGBM, ONNX Runtime, FastAPI, PyTorch). Developed for the Smart India Hackathon with INT8 CPU quantization (<1.5s latency) and offline field sync.
+- **LexMind**: Trilingual legal retrieval and decision platform for Indian financial statutes with SQLAlchemy/Alembic persistence, automated pytest suite, and RAGAS benchmark integration.
+- **Transaction-Level FMCG Supply Chain Lakehouse**: End-to-end Databricks medallion architecture (Bronze, Silver, Gold) handling transaction-level records with PySpark, Delta Lake, and data quality validation.
+
+## Core Technical Skills
+- **Agentic AI & GenAI**: Multi-Agent Systems, LangGraph, LangChain, RAG, ChromaDB, BM25 Hybrid Search, Prompt Engineering, LLM-as-a-Judge, RAGAS.
+- **Computer Vision & Edge**: OpenCV, YOLOv8, PyTorch, LightGBM, ONNX Runtime INT8, scikit-learn.
+- **Languages**: Python, Java (OOP), C, SQL.
+- **Backend & Data**: FastAPI, PostgreSQL, SQLAlchemy, Alembic, MySQL, Databricks, PySpark, Delta Lake.
+- **Tools**: Git, GitHub, VS Code, Postman, Linux/CLI, Docker.

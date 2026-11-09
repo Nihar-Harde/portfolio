@@ -13,12 +13,34 @@ import {
   ChevronUp,
   ShieldCheck,
   Languages,
+  Copy,
+  Check,
+  Sliders,
 } from "lucide-react";
 
 export const ResearchPatentSection: React.FC = () => {
   const { patent, researchPaper } = DOSSIER;
   const [activeStage, setActiveStage] = useState(0);
   const [isAbstractExpanded, setIsAbstractExpanded] = useState(false);
+  const [simEntropy, setSimEntropy] = useState(1.1);
+  const [simTemp, setSimTemp] = useState(0.8);
+  const [bibtexCopied, setBibtexCopied] = useState(false);
+
+  const bibtexCitation = `@inproceedings{harde2026legalrag,
+  author    = {Yadav, Uma and Harde, Nihar and Patle, Piyush and others},
+  title     = {Design and Implementation of a Legal Information Retrieval and Decision Support System Using RAG},
+  booktitle = {Proceedings of the 2026 24th OITS International Conference on Information Technology (OCIT)},
+  publisher = {IEEE},
+  year      = {2026}
+}`;
+
+  const handleCopyBibtex = () => {
+    zenAudio.playHoverTick();
+    navigator.clipboard.writeText(bibtexCitation).then(() => {
+      setBibtexCopied(true);
+      setTimeout(() => setBibtexCopied(false), 2400);
+    });
+  };
 
   return (
     <section
@@ -82,7 +104,7 @@ export const ResearchPatentSection: React.FC = () => {
               {patent.noveltySummary}
             </p>
 
-            {/* LaTeX Mathematical Formula Card */}
+            {/* LaTeX Mathematical Formula Card with Interactive Damping Visualizer */}
             <div className="rounded-lg bg-[#ede8de]/70 dark:bg-[#201d1a] p-3 sm:p-4 border border-[#181614]/10 dark:border-white/10 mb-6">
               <div className="flex flex-wrap items-center justify-between gap-1 text-[10px] sm:text-[11px] font-mono text-[#827b73] dark:text-[#9e978c] mb-2 pb-1 border-b border-[#181614]/10 dark:border-white/10">
                 <span>GOVERNING DAMPING FORMULA (EDLD)</span>
@@ -94,9 +116,62 @@ export const ResearchPatentSection: React.FC = () => {
                   className="text-[#181614] dark:text-[#f5f2eb] text-xs sm:text-sm md:text-base"
                 />
               </div>
-              <p className="text-[10px] sm:text-[11px] text-[#524d47] dark:text-[#d4cec3] mt-2 font-mono">
-                Where H(Pt) is instantaneous sequence entropy, &tau; is temperature scale, and &Omega;(v, Ci) is contextual penalty.
-              </p>
+
+              {/* Real-time Interactive EDLD Simulation */}
+              <div className="mt-3 pt-3 border-t border-[#181614]/10 dark:border-white/10">
+                <div className="flex flex-wrap items-center justify-between gap-1 text-[11px] font-mono mb-2">
+                  <span className="flex items-center gap-1.5 text-[#181614] dark:text-[#f5f2eb] font-semibold">
+                    <Sliders className="w-3.5 h-3.5 text-[#c82b2b]" />
+                    <span>In-Flight Damping Simulator</span>
+                  </span>
+                  <span className="text-[10px] px-2 py-0.5 rounded bg-[#f6f3eb] dark:bg-[#161513] border border-[#181614]/10 dark:border-white/10 text-[#c82b2b] dark:text-[#ff6b6b] font-bold">
+                    Penalty Factor: {(Math.exp(-simEntropy / simTemp) * 100).toFixed(1)}%
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-2">
+                  <div>
+                    <div className="flex justify-between text-[10px] font-mono text-[#524d47] dark:text-[#b8b2a7] mb-1">
+                      <span>Entropy H(Pt): {simEntropy.toFixed(2)} nats</span>
+                      <span>{simEntropy < 0.8 ? "Repetitive Loop" : simEntropy > 1.8 ? "Creative Burst" : "Normal"}</span>
+                    </div>
+                    <input
+                      type="range"
+                      min="0.2"
+                      max="3.0"
+                      step="0.05"
+                      value={simEntropy}
+                      onChange={(e) => setSimEntropy(parseFloat(e.target.value))}
+                      className="w-full accent-[#c82b2b] h-1.5 bg-[#d9d3c7] dark:bg-[#332f2a] rounded-lg appearance-none cursor-pointer"
+                      aria-label="Sequence Entropy Slider"
+                    />
+                  </div>
+                  <div>
+                    <div className="flex justify-between text-[10px] font-mono text-[#524d47] dark:text-[#b8b2a7] mb-1">
+                      <span>Thermal Scale &tau;: {simTemp.toFixed(2)}</span>
+                      <span>Sensitivity</span>
+                    </div>
+                    <input
+                      type="range"
+                      min="0.4"
+                      max="2.0"
+                      step="0.05"
+                      value={simTemp}
+                      onChange={(e) => setSimTemp(parseFloat(e.target.value))}
+                      className="w-full accent-[#c82b2b] h-1.5 bg-[#d9d3c7] dark:bg-[#332f2a] rounded-lg appearance-none cursor-pointer"
+                      aria-label="Temperature Scale Slider"
+                    />
+                  </div>
+                </div>
+
+                <p className="text-[10px] font-mono text-[#827b73] dark:text-[#9e978c]">
+                  {simEntropy < 0.8
+                    ? "🔴 Low Entropy Alert: Sequence is stuck in a repetitive loop. Logit damping aggressively suppresses repeat tokens."
+                    : simEntropy > 1.8
+                    ? "🟢 High Entropy Burst: Model is exploring novel vocabulary. Damping decays to 0% to avoid truncation."
+                    : "🟡 Nominal Entropy: Balanced logit interception active with calibrated contextual damping."}
+                </p>
+              </div>
             </div>
 
             {/* 3-Stage Interactive Architecture Stepper */}
@@ -166,9 +241,28 @@ export const ResearchPatentSection: React.FC = () => {
                 <FileCheck2 className="w-3.5 h-3.5" />
                 <span>FIRST AUTHOR • ACCEPTED</span>
               </div>
-              <span className="text-xs font-mono text-[#827b73] dark:text-[#9e978c]">
-                {researchPaper.status}
-              </span>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={handleCopyBibtex}
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#ede8de] dark:bg-[#221f1c] hover:bg-[#c82b2b] text-[#181614] dark:text-[#f5f2eb] hover:text-white dark:hover:text-white text-[11px] font-mono transition-colors border border-[#181614]/10 dark:border-white/10 shadow-xs"
+                  title="Copy BibTeX Citation"
+                >
+                  {bibtexCopied ? (
+                    <>
+                      <Check className="w-3 h-3 text-[#2e7d32] dark:text-[#4ade80]" />
+                      <span>Copied BibTeX</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3 h-3" />
+                      <span>Copy BibTeX</span>
+                    </>
+                  )}
+                </button>
+                <span className="text-xs font-mono text-[#827b73] dark:text-[#9e978c]">
+                  {researchPaper.status}
+                </span>
+              </div>
             </div>
 
             <h3 className="text-xl sm:text-2xl font-semibold text-[#181614] dark:text-[#f5f2eb] tracking-tight mb-2 font-display">

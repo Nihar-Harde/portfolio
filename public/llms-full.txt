@@ -1,0 +1,97 @@
+# Nihar Harde — Full Technical Dossier & Citation Index (LLMs Full)
+
+Author: Nihar Atul Harde
+Identity: Agentic AI & Edge Vision Engineer
+Primary Email: niharharde@gmail.com
+Institutional Email: hardena@rknec.edu
+GitHub: https://github.com/Nihar-Harde
+LinkedIn: https://www.linkedin.com/in/nihar-harde-41480228a
+Location: Nagpur, Maharashtra, India
+
+---
+
+## 1. Professional Profile & Biography
+Nihar Atul Harde is a Computer Science and Engineering undergraduate specializing in Data Science at Shri Ramdeobaba College of Engineering and Management (RBU), Nagpur (2023–2027, CGPA: 8.33/10.00). His engineering work centers on autonomous multi-agent orchestration, real-time edge computer vision (quantized INT8 YOLOv8 inference), and in-flight GPU tensor logit interception for autoregressive language model hallucination suppression.
+
+He has authored peer-reviewed research accepted and published at the IEEE 24th OITS International Conference on Information Technology (OCIT 2026), holds an in-flight patent application for entropy-scaled dynamic logit damping (EDLD), and completed the TiHAN Autonomous Aerial Drone AI fellowship at the Indian Institute of Technology (IIT) Hyderabad. In addition to technical systems, he holds Japanese Language Proficiency Test (JLPT) N4 Certification.
+
+---
+
+## 2. Research Publication (IEEE OCIT 2026)
+- **Title**: Design and Implementation of a Legal Information Retrieval and Decision Support System Using RAG
+- **Authors**: Uma Yadav, Nihar Harde, Piyush Patle, et al.
+- **Conference**: 2026 24th OITS International Conference on Information Technology (OCIT), IEEE
+- **Indexing**: IEEE Xplore
+- **Abstract**: Production-grade trilingual retrieval-augmented generation architecture engineered for the Indian legal domain across Central and State Acts. Incorporates Reciprocal Rank Fusion (RRF) across BM25 lexical sparse retrieval and dense ChromaDB vector embeddings with section-aware statute chunking to bound hallucination rates and eliminate citation drift.
+- **Quantitative Metrics**:
+  - Faithfulness: 0.875 (RAGAS Benchmark)
+  - Context Precision: 0.892 (RAGAS Benchmark)
+  - Legal Verification / Statute Fidelity: 1.000
+- **Supported Languages**: English, Hindi (हिन्दी), Marathi (मराठी)
+- **BibTeX Citation**:
+```bibtex
+@inproceedings{harde2026legalrag,
+  author    = {Yadav, Uma and Harde, Nihar and Patle, Piyush and others},
+  title     = {Design and Implementation of a Legal Information Retrieval and Decision Support System Using RAG},
+  booktitle = {Proceedings of the 2026 24th OITS International Conference on Information Technology (OCIT)},
+  publisher = {IEEE},
+  year      = {2026},
+  pages     = {Accepted / In Press}
+}
+```
+
+---
+
+## 3. Patent & Theoretical Formulation (TNARE / EDLD)
+- **Title**: A System and Method for In-Flight Tensor Logit Regulation and Temporal Anti-Repetition in Autoregressive Sequence Generation
+- **Acronym**: TNARE / EDLD (Entropy-scaled Dynamic Logit Damping)
+- **Lead Inventor**: Nihar Atul Harde
+- **Governing Mathematical Formulation**:
+$$z_t'(v) = z_t(v) - \alpha \cdot \exp\left(-\frac{H(P_t)}{\tau}\right) \cdot \Omega(v, C_i)$$
+Where:
+- $z_t(v)$ represents raw unnormalized token logits at generation step $t$.
+- $H(P_t) = -\sum_{v} P_t(v) \log P_t(v)$ is instantaneous sequence Shannon entropy.
+- $\tau$ is the thermal sensitivity scaling parameter.
+- $\Omega(v, C_i)$ is the contextual repetition penalty computed across prior token context windows.
+- **Benchmark Performance**:
+  - Repetition Reduction: 31.2% (direction: positive)
+  - Inference Latency Reduction: 24.8% (direction: positive)
+  - Perplexity Delta: 4.8% (direction: preserved)
+
+---
+
+## 4. Flagship Projects & Source Repositories
+
+### 4.1 Brief2Reel — Agentic AI Content Automation Pipeline
+- **Repository**: https://github.com/Nihar-Harde/Brief2Reel
+- **Stack**: Python, FastAPI, Multi-Agent Systems, LangGraph, ChromaDB, Groq SDK, Google Gemini API, PostgreSQL
+- **Architecture**: Multi-agent orchestration pipeline translating structured marketing briefs into brand-aligned short video reels. Sequences Copywriter, Design, Audio, Video Compositor, and Critic/QA agents. Employs an LLM-as-a-judge Critic Agent with a 5-dimension scoring rubric and audit traces persisted in PostgreSQL. Features semantic anti-repetition guards (<0.85 cosine distance threshold) with partitioned ChromaDB collections.
+- **Key Metrics**: 4-Agent Pipeline, <0.85 Cosine Distance Guard, 100% Traceability.
+
+### 4.2 Auto ATC — Automated Livestock Computer Vision & Scoring System
+- **Repository**: https://github.com/Nihar-Harde/AutoATC
+- **Stack**: Python, OpenCV, YOLOv8, LightGBM, ONNX Runtime, FastAPI, PyTorch
+- **Context**: Smart India Hackathon
+- **Architecture**: Automated computer vision inference system for bovine breed classification and Body Condition Scoring (BCS) benchmarked across 41 domestic breeds against clinical standards. Deployed via a lightweight FastAPI backend utilizing INT8 ONNX Runtime quantization, achieving sub-1.5s CPU inference and offline sync capability for rural field operations.
+- **Key Metrics**: 41 Domestic Breeds, <1.5s INT8 CPU Latency, 94.2% Classification Accuracy.
+
+### 4.3 LexMind — Enterprise Legal RAG Platform
+- **Repository**: https://github.com/Nihar-Harde/LexMind
+- **Stack**: Python, FastAPI, ChromaDB, BM25, LangChain, Groq API, PostgreSQL, SQLAlchemy, Alembic, pytest, RAGAS
+- **Architecture**: Trilingual dense-sparse hybrid legal retrieval system over Indian financial statutory frameworks (SEBI, RBI, PMLA). Employs section-aware chunking and Reciprocal Rank Fusion, with 12 automated pytest suites and empirical RAGAS benchmarking.
+- **Key Metrics**: 0.892 Context Precision, 3 Languages (English, Hindi, Marathi), 12 Automated Unit Tests.
+
+### 4.4 FMCG Supply Chain Lakehouse
+- **Repository**: https://github.com/Nihar-Harde/FMCG-SupplyChain-Lakehouse
+- **Stack**: Databricks, PySpark, SQL, Delta Lake
+- **Architecture**: Medallion architecture (Bronze -> Silver -> Gold) data engineering pipeline processing transaction-level FMCG supply chain datasets with automated data quality assertion gates.
+
+---
+
+## 5. Comprehensive Skills & Technologies
+- **Core Languages**: Python, Java (OOP), C, SQL, HTML5/CSS3, TypeScript/JavaScript.
+- **Agentic AI & LLMs**: Multi-Agent Systems, LangGraph, LangChain, RAG, Vector Search, ChromaDB, FAISS, BM25, Prompt Engineering, Structured Outputs, Groq, Gemini API.
+- **Machine Learning & Computer Vision**: PyTorch, YOLOv8, OpenCV, LightGBM, scikit-learn, ONNX Runtime INT8, K-Means Clustering, RFM Analytics.
+- **Backend & Data Engineering**: FastAPI, PostgreSQL, SQLAlchemy, Alembic, MySQL, Databricks, PySpark, Delta Lake.
+- **Developer Tools**: Git, GitHub, VS Code, Postman, Linux/CLI, Docker, Streamlit.
+- **Natural Languages**: English (Fluent), Hindi (Native), Marathi (Native), Japanese (JLPT N4 Certified).
