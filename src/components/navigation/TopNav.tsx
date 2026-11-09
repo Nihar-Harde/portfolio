@@ -156,11 +156,11 @@ export const TopNav: React.FC<TopNavProps> = ({ onOpenDossier }) => {
       <nav
         aria-label="Primary Navigation"
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 flex items-center justify-end px-6 sm:px-12 md:px-20 transition-all duration-300 ease-in-out pointer-events-none",
+          "fixed top-0 left-0 right-0 z-50 flex items-center justify-end px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 transition-all duration-300 ease-in-out pointer-events-none",
           isVisible
             ? "translate-y-0 opacity-100"
             : "-translate-y-full opacity-0",
-          isScrolled ? "py-3 sm:py-4" : "py-5 sm:py-6"
+          isScrolled ? "py-2.5 sm:py-3.5" : "py-4 sm:py-5"
         )}
       >
         {/* Zero-Box Seamless Top Fog / Vignette Fade (No border, no box shadow, perfectly dissolved bottom edge) */}
@@ -182,7 +182,7 @@ export const TopNav: React.FC<TopNavProps> = ({ onOpenDossier }) => {
         />
 
         {/* Desktop Navigation Links (High Contrast, Razor-Sharp Typography, Zero Box) */}
-        <div className="hidden md:flex items-center gap-5 lg:gap-7 text-xs sm:text-[13px] lg:text-sm font-semibold tracking-wider pointer-events-auto">
+        <div className="hidden xl:flex items-center gap-5 lg:gap-7 text-xs sm:text-[13px] lg:text-sm font-semibold tracking-wider pointer-events-auto whitespace-nowrap">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
@@ -191,7 +191,7 @@ export const TopNav: React.FC<TopNavProps> = ({ onOpenDossier }) => {
                 href={`#${item.id}`}
                 onClick={(e) => handleNavClick(e, item.id)}
                 className={cn(
-                  "group relative py-1 transition-all duration-200 flex items-center gap-1.5",
+                  "group relative py-1 transition-all duration-200 flex items-center gap-1.5 whitespace-nowrap flex-shrink-0",
                   isActive
                     ? isDarkCanvas
                       ? "text-[#ff4d4d] font-bold drop-shadow-[0_1px_8px_rgba(255,77,77,0.5)]"
@@ -220,7 +220,7 @@ export const TopNav: React.FC<TopNavProps> = ({ onOpenDossier }) => {
 
           <div
             className={cn(
-              "w-[1.5px] h-4 mx-1.5 transition-colors",
+              "w-[1.5px] h-4 mx-1.5 transition-colors flex-shrink-0",
               isDarkCanvas ? "bg-white/30" : "bg-[#181614]/25"
             )}
           />
@@ -232,7 +232,7 @@ export const TopNav: React.FC<TopNavProps> = ({ onOpenDossier }) => {
               onOpenDossier();
             }}
             className={cn(
-              "group relative py-1 text-xs sm:text-[13px] lg:text-sm transition-colors font-bold flex items-center gap-1.5",
+              "group relative py-1 text-xs sm:text-[13px] lg:text-sm transition-colors font-bold flex items-center gap-1.5 whitespace-nowrap flex-shrink-0",
               isDarkCanvas
                 ? "text-[#f5f2eb] hover:text-[#ff4d4d] drop-shadow-[0_1px_4px_rgba(0,0,0,0.85)]"
                 : "text-[#181614] hover:text-[#c82b2b] drop-shadow-[0_1px_2px_rgba(255,255,255,0.8)]"
@@ -260,7 +260,7 @@ export const TopNav: React.FC<TopNavProps> = ({ onOpenDossier }) => {
             onClick={handleThemeToggle}
             title={isDarkMode ? "Switch to Washi Light Mode" : "Switch to Sumi-e Dark Mode"}
             className={cn(
-              "py-1 px-1 text-xs font-mono font-bold transition-colors flex items-center gap-1.5",
+              "py-1 px-1 text-xs font-mono font-bold transition-colors flex items-center gap-1.5 whitespace-nowrap flex-shrink-0",
               isDarkCanvas
                 ? "text-[#f5f2eb]/90 hover:text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.85)]"
                 : "text-[#181614] hover:text-[#c82b2b] drop-shadow-[0_1px_2px_rgba(255,255,255,0.8)]"
@@ -284,7 +284,7 @@ export const TopNav: React.FC<TopNavProps> = ({ onOpenDossier }) => {
             onClick={handleAudioToggle}
             title={isMuted ? "Unmute Zen Sound" : "Mute Zen Sound"}
             className={cn(
-              "py-1 text-xs font-mono font-bold transition-colors",
+              "py-1 text-xs font-mono font-bold transition-colors whitespace-nowrap flex-shrink-0",
               isDarkCanvas
                 ? "text-[#f5f2eb]/90 hover:text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.85)]"
                 : "text-[#181614] hover:text-[#c82b2b] drop-shadow-[0_1px_2px_rgba(255,255,255,0.8)]"
@@ -294,25 +294,25 @@ export const TopNav: React.FC<TopNavProps> = ({ onOpenDossier }) => {
           </button>
         </div>
 
-        {/* Mobile Navigation Bar (< md) */}
-        <div className="flex md:hidden items-center gap-2 sm:gap-3 pointer-events-auto">
+        {/* Mobile & Tablet Navigation Bar (< xl) */}
+        <div className="flex xl:hidden items-center gap-2 sm:gap-2.5 pointer-events-auto">
           {/* Quick Dossier Button */}
           <button
             onClick={() => {
               zenAudio.playWoodblock();
               onOpenDossier();
             }}
-            className="px-2.5 py-1 text-xs rounded-md bg-[#ede8de] dark:bg-[#1e1c19] text-[#181614] dark:text-[#f5f2eb] border border-[#181614]/10 dark:border-white/10 flex items-center gap-1 font-mono"
+            className="px-3 py-1.5 text-xs rounded-full bg-[#fbf9f4]/95 dark:bg-[#1e1c19]/95 text-[#181614] dark:text-[#f5f2eb] border border-[#181614]/12 dark:border-white/12 shadow-sm backdrop-blur-md flex items-center gap-1.5 font-mono font-medium hover:border-[#c82b2b]/40 transition-colors"
             aria-label="Open Candidate Dossier"
           >
-            <span className="text-[10px] text-[#c82b2b] dark:text-[#e03e3e] font-japanese font-bold">印</span>
+            <span className="text-[11px] text-[#c82b2b] dark:text-[#ff4d4d] font-japanese font-bold">印</span>
             <span>Dossier</span>
           </button>
 
           {/* Theme Quick Toggle */}
           <button
             onClick={handleThemeToggle}
-            className="p-1.5 rounded-md text-[#524d47] dark:text-[#b8b2a7] hover:text-[#c82b2b]"
+            className="p-2 rounded-full bg-[#fbf9f4]/95 dark:bg-[#1e1c19]/95 border border-[#181614]/12 dark:border-white/12 shadow-sm backdrop-blur-md text-[#524d47] dark:text-[#b8b2a7] hover:text-[#c82b2b] transition-colors"
             aria-label={isDarkMode ? "Switch to Washi Light Mode" : "Switch to Sumi Dark Mode"}
           >
             {isDarkMode ? <Sun className="w-4 h-4 text-[#dfb15b]" /> : <Moon className="w-4 h-4" />}
@@ -321,7 +321,7 @@ export const TopNav: React.FC<TopNavProps> = ({ onOpenDossier }) => {
           {/* Audio Quick Toggle */}
           <button
             onClick={handleAudioToggle}
-            className="p-1.5 rounded-md text-[#524d47] dark:text-[#b8b2a7] hover:text-[#c82b2b]"
+            className="p-2 rounded-full bg-[#fbf9f4]/95 dark:bg-[#1e1c19]/95 border border-[#181614]/12 dark:border-white/12 shadow-sm backdrop-blur-md text-[#524d47] dark:text-[#b8b2a7] hover:text-[#c82b2b] transition-colors"
             aria-label={isMuted ? "Unmute Audio" : "Mute Audio"}
           >
             {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4 text-[#c82b2b]" />}
@@ -333,27 +333,27 @@ export const TopNav: React.FC<TopNavProps> = ({ onOpenDossier }) => {
               zenAudio.playWoodblock();
               setIsMobileMenuOpen(!isMobileMenuOpen);
             }}
-            className="p-2 ml-1 rounded-md bg-[#ede8de] dark:bg-[#1e1c19] border border-[#181614]/10 dark:border-white/10 text-[#181614] dark:text-[#f5f2eb] focus:outline-none"
+            className="p-2.5 ml-0.5 rounded-full bg-[#fbf9f4]/95 dark:bg-[#1e1c19]/95 border border-[#181614]/12 dark:border-white/12 shadow-sm backdrop-blur-md text-[#181614] dark:text-[#f5f2eb] focus:outline-none hover:border-[#c82b2b]/40 transition-colors"
             aria-label={isMobileMenuOpen ? "Close Navigation Menu" : "Open Navigation Menu"}
             aria-expanded={isMobileMenuOpen}
           >
-            <div className="w-5 h-4 flex flex-col justify-between items-center relative">
+            <div className="w-4 h-3.5 flex flex-col justify-between items-center relative">
               <span
                 className={cn(
-                  "w-5 h-[2px] bg-[#181614] dark:bg-[#f5f2eb] transition-all duration-300 origin-center",
-                  isMobileMenuOpen ? "rotate-45 translate-y-[7px] bg-[#c82b2b]" : ""
+                  "w-4 h-[2px] bg-[#181614] dark:bg-[#f5f2eb] transition-all duration-300 origin-center",
+                  isMobileMenuOpen ? "rotate-45 translate-y-[6px] bg-[#c82b2b]" : ""
                 )}
               />
               <span
                 className={cn(
-                  "w-4 h-[2px] bg-[#c82b2b] dark:bg-[#e03e3e] transition-opacity duration-200 self-end",
+                  "w-3 h-[2px] bg-[#c82b2b] dark:bg-[#e03e3e] transition-opacity duration-200 self-end",
                   isMobileMenuOpen ? "opacity-0" : "opacity-100"
                 )}
               />
               <span
                 className={cn(
-                  "w-5 h-[2px] bg-[#181614] dark:bg-[#f5f2eb] transition-all duration-300 origin-center",
-                  isMobileMenuOpen ? "-rotate-45 -translate-y-[7px] bg-[#c82b2b]" : ""
+                  "w-4 h-[2px] bg-[#181614] dark:bg-[#f5f2eb] transition-all duration-300 origin-center",
+                  isMobileMenuOpen ? "-rotate-45 -translate-y-[6px] bg-[#c82b2b]" : ""
                 )}
               />
             </div>
@@ -364,7 +364,7 @@ export const TopNav: React.FC<TopNavProps> = ({ onOpenDossier }) => {
       {/* Slide-in Mobile Drawer */}
       <div
         className={cn(
-          "fixed inset-0 z-50 md:hidden transition-opacity duration-300 pointer-events-none",
+          "fixed inset-0 z-50 xl:hidden transition-opacity duration-300 pointer-events-none",
           isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0"
         )}
       >

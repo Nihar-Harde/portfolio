@@ -81,7 +81,7 @@ export const CredentialsSection: React.FC = () => {
   return (
     <section
       id="credentials"
-      className="relative w-full py-24 sm:py-32 px-6 sm:px-12 md:px-20 bg-[#f6f3eb] dark:bg-[#121110] text-[#181614] dark:text-[#f5f2eb] overflow-hidden transition-colors duration-300"
+      className="relative w-full py-16 sm:py-24 md:py-32 px-4 sm:px-8 md:px-12 lg:px-20 bg-[#f6f3eb] dark:bg-[#121110] text-[#181614] dark:text-[#f5f2eb] overflow-hidden transition-colors duration-300"
     >
       {/* Sumi Divider Line */}
       <div className="sumi-divider absolute top-0 left-0" />
@@ -92,9 +92,9 @@ export const CredentialsSection: React.FC = () => {
       </div>
 
       {/* Section Header */}
-      <div className="relative z-10 max-w-7xl mx-auto mb-14">
-        <div className="flex items-center gap-3 mb-3">
-          <span className="text-sm font-japanese text-[#c82b2b] dark:text-[#e03e3e] tracking-wider font-semibold">
+      <div className="relative z-10 max-w-7xl mx-auto mb-10 sm:mb-14">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3">
+          <span className="text-xs sm:text-sm font-japanese text-[#c82b2b] dark:text-[#e03e3e] tracking-wider font-semibold whitespace-nowrap">
             「経歴・資格」
           </span>
           <span className="h-[1px] w-8 bg-[#c82b2b]/40" />
@@ -102,18 +102,18 @@ export const CredentialsSection: React.FC = () => {
             Academic Honors, Research Fellowships &amp; Linguistic Distinction
           </span>
         </div>
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6">
           <div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#181614] dark:text-[#f5f2eb] font-display">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#181614] dark:text-[#f5f2eb] font-display">
               Education, Credentials &amp; Honors
             </h2>
-            <p className="mt-2 text-base text-[#524d47] dark:text-[#b8b2a7] max-w-2xl leading-relaxed">
+            <p className="mt-2 text-sm sm:text-base text-[#524d47] dark:text-[#b8b2a7] max-w-2xl leading-relaxed">
               Formal academic foundation at Ramdeobaba University, autonomous aerial AI research at IIT Hyderabad TiHAN, and certified Japanese language capability.
             </p>
           </div>
 
           {/* Verification Badge */}
-          <div className="flex items-center gap-2 p-2.5 rounded-lg bg-[#ede8de]/60 dark:bg-[#1e1c19] border border-[#181614]/10 dark:border-white/10 text-xs font-mono text-[#524d47] dark:text-[#b8b2a7]">
+          <div className="flex items-center gap-2 p-2 sm:p-2.5 rounded-lg bg-[#ede8de]/60 dark:bg-[#1e1c19] border border-[#181614]/10 dark:border-white/10 text-[11px] sm:text-xs font-mono text-[#524d47] dark:text-[#b8b2a7] flex-shrink-0">
             <ShieldCheck className="w-4 h-4 text-[#2e7d32] dark:text-[#4ade80]" />
             <span>AUTHENTICATED DOSSIER RECORDS</span>
           </div>
@@ -121,7 +121,7 @@ export const CredentialsSection: React.FC = () => {
       </div>
 
       {/* Asymmetrical Bento Grid */}
-      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
+      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 sm:gap-6">
         {/* ========================================================= */}
         {/* BENTO TILE 1: Academic Degree & Focus (Hero Span: 7 cols)  */}
         {/* ========================================================= */}

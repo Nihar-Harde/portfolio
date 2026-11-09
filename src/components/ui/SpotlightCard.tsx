@@ -32,6 +32,10 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
   };
 
   const handleMouseEnter = () => {
+    // Only enable spotlight and hover sound for devices with fine pointer (mouse/trackpad)
+    if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) {
+      return;
+    }
     setOpacity(1);
     if (enableHoverSound) {
       zenAudio.playHoverTick();
@@ -49,7 +53,7 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className={cn(
-        "spotlight-card group relative overflow-hidden rounded-xl p-6 sm:p-8 washi-card",
+        "spotlight-card group relative overflow-hidden rounded-xl p-4 sm:p-6 md:p-8 washi-card",
         className
       )}
       {...props}

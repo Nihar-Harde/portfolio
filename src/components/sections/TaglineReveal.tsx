@@ -134,7 +134,7 @@ export const TaglineReveal: React.FC = () => {
     <section
       id="philosophy"
       ref={sectionRef}
-      className="relative w-full min-h-screen py-24 sm:py-32 px-6 sm:px-12 md:px-20 flex flex-col items-center justify-center text-center overflow-hidden select-none"
+      className="relative w-full min-h-screen py-16 sm:py-24 md:py-32 px-4 sm:px-8 md:px-12 lg:px-20 flex flex-col items-center justify-center text-center overflow-hidden select-none"
       style={{
         backgroundColor: isDarkMode ? "#f6f3eb" : "#fbf9f4",
         borderBottom: `1px solid ${lerpColor([24, 22, 20], [255, 255, 255], canvasDarkness)}20`,
@@ -324,7 +324,7 @@ export const TaglineReveal: React.FC = () => {
         </div>
 
         {/* Word-by-Word Reveal Statement */}
-        <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.3] text-balance font-display">
+        <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold tracking-tight leading-[1.35] sm:leading-[1.3] text-balance font-display">
           {words.map((word, idx) => {
             const wordThreshold = (idx / Math.max(1, words.length - 1)) * 0.88;
             const isActive = scrollProgress >= wordThreshold;
@@ -343,7 +343,7 @@ export const TaglineReveal: React.FC = () => {
               <span
                 key={idx}
                 onMouseEnter={() => zenAudio.playHoverTick()}
-                className={`inline-block mr-2.5 transition-all duration-200 ${
+                className={`inline-block mr-1.5 sm:mr-2.5 transition-all duration-200 ${
                   isActive
                     ? isHighlight
                       ? "font-bold opacity-100 scale-100"
@@ -360,13 +360,13 @@ export const TaglineReveal: React.FC = () => {
 
         {/* Footnote Metadata */}
         <div
-          className="mt-10 flex items-center justify-center gap-6 text-xs font-mono transition-colors duration-100"
+          className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-x-3 sm:gap-x-6 gap-y-2 text-[10px] sm:text-xs font-mono transition-colors duration-100 px-2"
           style={{ color: footnoteColor }}
         >
           <span>GPU TENSOR INTERCEPTION</span>
-          <span>•</span>
+          <span className="hidden sm:inline">•</span>
           <span>MULTILINGUAL STATUTE RAG</span>
-          <span>•</span>
+          <span className="hidden sm:inline">•</span>
           <span>EDGE INT8 QUANTIZATION</span>
         </div>
       </div>

@@ -106,7 +106,7 @@ export const SkillsMatrixSection: React.FC = () => {
   return (
     <section
       id="skills-matrix"
-      className="relative w-full py-24 sm:py-32 px-6 sm:px-12 md:px-20 bg-[#f6f3eb] dark:bg-[#121110] text-[#181614] dark:text-[#f5f2eb] overflow-hidden transition-colors duration-300"
+      className="relative w-full py-16 sm:py-24 md:py-32 px-4 sm:px-8 md:px-12 lg:px-20 bg-[#f6f3eb] dark:bg-[#121110] text-[#181614] dark:text-[#f5f2eb] overflow-hidden transition-colors duration-300"
     >
       {/* Sumi Divider Line */}
       <div className="sumi-divider absolute top-0 left-0" />
@@ -117,9 +117,9 @@ export const SkillsMatrixSection: React.FC = () => {
       </div>
 
       {/* Section Header */}
-      <div className="relative z-10 max-w-7xl mx-auto mb-14">
-        <div className="flex items-center gap-3 mb-3">
-          <span className="text-sm font-japanese text-[#c82b2b] dark:text-[#e03e3e] tracking-wider font-semibold">
+      <div className="relative z-10 max-w-7xl mx-auto mb-10 sm:mb-14">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3">
+          <span className="text-xs sm:text-sm font-japanese text-[#c82b2b] dark:text-[#e03e3e] tracking-wider font-semibold whitespace-nowrap">
             「技術体系」
           </span>
           <span className="h-[1px] w-8 bg-[#c82b2b]/40" />
@@ -127,29 +127,29 @@ export const SkillsMatrixSection: React.FC = () => {
             Engineering Taxonomy &amp; Asymmetrical Bento Matrix
           </span>
         </div>
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6">
           <div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#181614] dark:text-[#f5f2eb] font-display">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#181614] dark:text-[#f5f2eb] font-display">
               Technical Competencies &amp; Craft
             </h2>
-            <p className="mt-2 text-base text-[#524d47] dark:text-[#b8b2a7] max-w-2xl leading-relaxed">
+            <p className="mt-2 text-sm sm:text-base text-[#524d47] dark:text-[#b8b2a7] max-w-2xl leading-relaxed">
               Four specialized technical domains spanning foundational low-level systems to autonomous AI pipelines and hardware-accelerated computer vision.
             </p>
           </div>
 
           {/* Level Legend Pills */}
-          <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono p-2 rounded-lg bg-[#ede8de]/60 dark:bg-[#1e1c19] border border-[#181614]/10 dark:border-white/10">
-            <span className="text-[#827b73] dark:text-[#9e978c] mr-1">TIERS:</span>
-            <span className="px-2 py-0.5 rounded border border-[#c82b2b]/30 dark:border-[#c82b2b]/40 bg-[#c82b2b]/10 dark:bg-[#c82b2b]/20 text-[#c82b2b] dark:text-[#ff6b6b] font-medium">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-[10px] sm:text-[11px] font-mono p-1.5 sm:p-2 rounded-lg bg-[#ede8de]/60 dark:bg-[#1e1c19] border border-[#181614]/10 dark:border-white/10">
+            <span className="text-[#827b73] dark:text-[#9e978c] mr-0.5 sm:mr-1">TIERS:</span>
+            <span className="px-1.5 sm:px-2 py-0.5 rounded border border-[#c82b2b]/30 dark:border-[#c82b2b]/40 bg-[#c82b2b]/10 dark:bg-[#c82b2b]/20 text-[#c82b2b] dark:text-[#ff6b6b] font-medium">
               Core
             </span>
-            <span className="px-2 py-0.5 rounded border border-[#c59b48]/35 dark:border-[#c59b48]/45 bg-[#c59b48]/15 dark:bg-[#c59b48]/25 text-[#8a681c] dark:text-[#e5be64] font-medium">
+            <span className="px-1.5 sm:px-2 py-0.5 rounded border border-[#c59b48]/35 dark:border-[#c59b48]/45 bg-[#c59b48]/15 dark:bg-[#c59b48]/25 text-[#8a681c] dark:text-[#e5be64] font-medium">
               Advanced
             </span>
-            <span className="px-2 py-0.5 rounded border border-[#2e7d32]/30 dark:border-[#2e7d32]/40 bg-[#2e7d32]/10 dark:bg-[#2e7d32]/20 text-[#2e7d32] dark:text-[#4ade80] font-medium">
+            <span className="px-1.5 sm:px-2 py-0.5 rounded border border-[#2e7d32]/30 dark:border-[#2e7d32]/40 bg-[#2e7d32]/10 dark:bg-[#2e7d32]/20 text-[#2e7d32] dark:text-[#4ade80] font-medium">
               Proficient
             </span>
-            <span className="px-2 py-0.5 rounded border border-[#827b73]/30 dark:border-[#827b73]/40 bg-[#827b73]/15 dark:bg-[#827b73]/25 text-[#524d47] dark:text-[#d4cec3] font-medium">
+            <span className="px-1.5 sm:px-2 py-0.5 rounded border border-[#827b73]/30 dark:border-[#827b73]/40 bg-[#827b73]/15 dark:bg-[#827b73]/25 text-[#524d47] dark:text-[#d4cec3] font-medium">
               Exploring
             </span>
           </div>
@@ -157,7 +157,7 @@ export const SkillsMatrixSection: React.FC = () => {
       </div>
 
       {/* Asymmetrical Bento Grid */}
-      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
+      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 sm:gap-6">
         {/* ========================================================= */}
         {/* BENTO TILE 1: Agentic AI & GenAI (Large Hero Span: 7 cols) */}
         {/* ========================================================= */}
@@ -199,21 +199,21 @@ export const SkillsMatrixSection: React.FC = () => {
                   </span>
                   <span className="text-[10px] text-[#2e7d32] dark:text-[#4ade80] font-semibold">TNARE + LangGraph</span>
                 </div>
-                <div className="grid grid-cols-4 gap-1.5 text-center text-[11px] font-mono">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 text-center text-[10px] sm:text-[11px] font-mono">
                   <div className="p-2 rounded bg-[#f6f3eb] dark:bg-[#282522] border border-[#181614]/10 dark:border-white/10">
-                    <span className="block text-[9px] text-[#827b73] dark:text-[#9e978c]">STEP 1</span>
+                    <span className="block text-[8px] sm:text-[9px] text-[#827b73] dark:text-[#9e978c]">STEP 1</span>
                     <span className="text-[#181614] dark:text-[#f5f2eb] truncate block">Perception</span>
                   </div>
                   <div className="p-2 rounded bg-[#f6f3eb] dark:bg-[#282522] border border-[#181614]/10 dark:border-white/10">
-                    <span className="block text-[9px] text-[#827b73] dark:text-[#9e978c]">STEP 2</span>
+                    <span className="block text-[8px] sm:text-[9px] text-[#827b73] dark:text-[#9e978c]">STEP 2</span>
                     <span className="text-[#181614] dark:text-[#f5f2eb] truncate block">Hybrid RRF</span>
                   </div>
                   <div className="p-2 rounded bg-[#f6f3eb] dark:bg-[#282522] border border-[#181614]/10 dark:border-white/10">
-                    <span className="block text-[9px] text-[#827b73] dark:text-[#9e978c]">STEP 3</span>
+                    <span className="block text-[8px] sm:text-[9px] text-[#827b73] dark:text-[#9e978c]">STEP 3</span>
                     <span className="text-[#c82b2b] dark:text-[#ff6b6b] truncate block font-medium">Logit Damp</span>
                   </div>
                   <div className="p-2 rounded bg-[#f6f3eb] dark:bg-[#282522] border border-[#181614]/10 dark:border-white/10">
-                    <span className="block text-[9px] text-[#827b73] dark:text-[#9e978c]">STEP 4</span>
+                    <span className="block text-[8px] sm:text-[9px] text-[#827b73] dark:text-[#9e978c]">STEP 4</span>
                     <span className="text-[#2e7d32] dark:text-[#4ade80] truncate block font-medium">Critic Fix</span>
                   </div>
                 </div>
@@ -596,7 +596,7 @@ export const SkillsMatrixSection: React.FC = () => {
 
       {/* Interactive Active Skill Telemetry Drawer */}
       {selectedSkill && (
-        <div className="relative z-10 max-w-7xl mx-auto mt-6 p-4 sm:p-5 rounded-xl bg-[#fbf9f4] dark:bg-[#181614] border border-[#c82b2b]/40 dark:border-[#ff4d4d]/40 shadow-sm washi-card animate-fade-in flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="relative z-10 max-w-7xl mx-auto mt-6 p-3.5 sm:p-5 rounded-xl bg-[#fbf9f4] dark:bg-[#181614] border border-[#c82b2b]/40 dark:border-[#ff4d4d]/40 shadow-sm washi-card animate-fade-in flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4">
           <div className="flex flex-col sm:flex-row sm:items-center gap-3">
             <div className="flex items-center gap-2">
               <span className="hanko-stamp px-2 py-0.5 text-xs font-semibold">特技</span>

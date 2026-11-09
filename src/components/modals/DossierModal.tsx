@@ -67,7 +67,7 @@ GitHub: ${personal.github} | LinkedIn: ${personal.linkedin}
       role="dialog"
       aria-modal="true"
       aria-labelledby="dossier-modal-title"
-      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 bg-[#181614]/75 dark:bg-black/85 backdrop-blur-md overflow-y-auto animate-fade-in"
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-2.5 sm:p-4 md:p-6 bg-[#181614]/75 dark:bg-black/85 backdrop-blur-md overflow-y-auto animate-fade-in"
       onClick={() => {
         zenAudio.playWoodblock();
         onClose();
@@ -75,7 +75,7 @@ GitHub: ${personal.github} | LinkedIn: ${personal.linkedin}
     >
       <div
         data-lenis-prevent="true"
-        className="washi-modal-container modal-ink-wash relative w-full max-w-4xl max-h-[86vh] my-auto p-6 sm:p-10 bg-[#fbf9f4] dark:bg-[#181614] border border-[#181614]/15 dark:border-white/15 text-[#181614] dark:text-[#f5f2eb] shadow-2xl"
+        className="washi-modal-container modal-ink-wash relative w-full max-w-4xl max-h-[92dvh] sm:max-h-[86vh] my-auto p-4 sm:p-7 md:p-10 bg-[#fbf9f4] dark:bg-[#181614] border border-[#181614]/15 dark:border-white/15 text-[#181614] dark:text-[#f5f2eb] shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -91,33 +91,33 @@ GitHub: ${personal.github} | LinkedIn: ${personal.linkedin}
         </button>
 
         {/* Modal Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#181614]/10 dark:border-white/10 pb-6 mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 border-b border-[#181614]/10 dark:border-white/10 pb-4 sm:pb-6 mb-6 sm:mb-8">
           <div>
-            <div className="flex items-center gap-2 mb-1.5">
-              <span className="hanko-stamp px-2 py-0.5 text-xs font-semibold">「履歴書・調書」</span>
+            <div className="flex flex-wrap items-center gap-2 mb-1.5">
+              <span className="hanko-stamp px-2 py-0.5 text-xs font-semibold whitespace-nowrap flex-shrink-0">「履歴書・調書」</span>
               <span className="text-[10px] font-mono tracking-widest text-[#827b73] dark:text-[#9e978c] uppercase">
                 Verified Candidate Dossier
               </span>
             </div>
-            <h2 id="dossier-modal-title" className="text-2xl sm:text-3xl font-semibold tracking-tight text-[#181614] dark:text-[#f5f2eb] font-display">
+            <h2 id="dossier-modal-title" className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight text-[#181614] dark:text-[#f5f2eb] font-display">
               {personal.fullName}
             </h2>
-            <p className="text-sm font-mono text-[#c82b2b] dark:text-[#e03e3e] mt-1">
+            <p className="text-xs sm:text-sm font-mono text-[#c82b2b] dark:text-[#e03e3e] mt-1">
               {personal.identity} • {personal.location}
             </p>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={handleCopySummary}
-              className="flex items-center gap-1.5 px-3.5 py-2 rounded-md bg-[#ede8de] dark:bg-[#23201c] hover:bg-[#ede8de]/80 border border-[#181614]/10 dark:border-white/10 text-xs font-mono text-[#181614] dark:text-[#f5f2eb] transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-md bg-[#ede8de] dark:bg-[#23201c] hover:bg-[#ede8de]/80 border border-[#181614]/10 dark:border-white/10 text-xs font-mono text-[#181614] dark:text-[#f5f2eb] transition-colors"
             >
               {copied ? <Check className="w-4 h-4 text-[#2e7d32]" /> : <Copy className="w-4 h-4" />}
               <span>{copied ? "Copied" : "Copy Dossier"}</span>
             </button>
             <button
               onClick={handlePrint}
-              className="flex items-center gap-1.5 px-3.5 py-2 rounded-md bg-[#c82b2b] hover:bg-[#a81c1c] text-white text-xs font-mono transition-colors shadow-sm"
+              className="flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-md bg-[#c82b2b] hover:bg-[#a81c1c] text-white text-xs font-mono transition-colors shadow-sm"
             >
               <Printer className="w-4 h-4" />
               <span>Print / PDF</span>

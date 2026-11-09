@@ -10,7 +10,11 @@ export const HeroCanvas: React.FC = () => {
 
   // Subtle mouse inertia parallax for the Ukiyo-e scenery
   useEffect(() => {
-    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (
+      typeof window !== "undefined" &&
+      (window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+        window.matchMedia("(pointer: coarse)").matches)
+    ) {
       return;
     }
 
@@ -80,7 +84,8 @@ export const HeroCanvas: React.FC = () => {
     }
 
     const particles: LeafParticle[] = [];
-    const count = 30;
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    const count = isMobile ? 14 : 30;
     const colors = [
       "#c82b2b", // Lacquer vermilion
       "#a81c1c", // Deep maple crimson
@@ -182,7 +187,10 @@ export const HeroCanvas: React.FC = () => {
       <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#f6f3eb] via-[#f6f3eb]/65 to-transparent z-[2]" />
 
       {/* Left Edge Washi Tint for text clarity without obscuring the artwork */}
-      <div className="absolute inset-y-0 left-0 w-full sm:w-1/2 lg:w-5/12 bg-gradient-to-r from-[#f6f3eb]/95 via-[#f6f3eb]/70 to-transparent z-[2]" />
+      <div className="absolute inset-y-0 left-0 w-full sm:w-8/12 lg:w-5/12 bg-gradient-to-r from-[#f6f3eb]/95 via-[#f6f3eb]/80 sm:via-[#f6f3eb]/75 to-[#f6f3eb]/35 sm:to-transparent z-[2]" />
+
+      {/* Mobile/Tablet Portrait Ambient Diffuser so Mt. Fuji, sun, and pagoda remain visible while text has optimal contrast */}
+      <div className="absolute inset-0 bg-[#f6f3eb]/45 sm:bg-[#f6f3eb]/20 md:hidden z-[2] pointer-events-none" />
 
       {/* Floating Autumn Maple & Ink Fleck Canvas Overlay */}
       <canvas

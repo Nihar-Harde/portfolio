@@ -10,9 +10,9 @@ import Image from "next/image";
 export const ResearchVectorBackdrop: React.FC = () => {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 select-none">
-      {/* Distant Misty Mountain Ink Wash Silhouette — MORE PROMINENT */}
+      {/* Distant Misty Mountain Ink Wash Silhouette */}
       <svg
-        className="absolute top-12 left-0 w-full h-[380px] text-[#181614] opacity-[0.22]"
+        className="absolute top-12 left-0 w-full h-[220px] sm:h-[380px] text-[#181614] opacity-[0.14] sm:opacity-[0.22]"
         viewBox="0 0 1440 380"
         fill="none"
         preserveAspectRatio="none"
@@ -29,12 +29,12 @@ export const ResearchVectorBackdrop: React.FC = () => {
         />
       </svg>
 
-      {/* Subtle Rising Sun Backdrop Arch — ENLARGED & WARMER */}
-      <div className="absolute -top-24 right-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-b from-[#c82b2b]/14 via-[#c59b48]/06 to-transparent pointer-events-none" />
+      {/* Subtle Rising Sun Backdrop Arch */}
+      <div className="absolute -top-24 right-1/4 w-[320px] sm:w-[600px] h-[320px] sm:h-[600px] rounded-full bg-gradient-to-b from-[#c82b2b]/14 via-[#c59b48]/06 to-transparent pointer-events-none" />
 
-      {/* Drifting Kasumi Mist Layer — Top (NEW) */}
+      {/* Drifting Kasumi Mist Layer — Top */}
       <svg
-        className="absolute top-0 left-0 w-full h-[200px] opacity-[0.12]"
+        className="absolute top-0 left-0 w-full h-[140px] sm:h-[200px] opacity-[0.12]"
         viewBox="0 0 1440 200"
         fill="none"
         preserveAspectRatio="none"
@@ -57,9 +57,9 @@ export const ResearchVectorBackdrop: React.FC = () => {
         <div className="w-[1.5px] h-16 bg-[#181614]/30" />
       </div>
 
-      {/* Floating Kasumi Mist Ribbon SVG — BOOSTED */}
+      {/* Floating Kasumi Mist Ribbon SVG */}
       <svg
-        className="absolute top-10 left-1/3 w-[680px] h-[360px] text-[#181614] opacity-[0.22]"
+        className="absolute top-10 left-1/4 sm:left-1/3 w-[360px] sm:w-[680px] h-[200px] sm:h-[360px] text-[#181614] opacity-[0.14] sm:opacity-[0.22]"
         viewBox="0 0 600 350"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -83,9 +83,9 @@ export const ResearchVectorBackdrop: React.FC = () => {
         />
       </svg>
 
-      {/* Seigaiha Wave Band — Bottom Left (NEW) */}
+      {/* Seigaiha Wave Band — Bottom Left */}
       <svg
-        className="absolute bottom-16 left-0 w-[500px] h-[200px] text-[#181614] opacity-[0.14]"
+        className="absolute bottom-16 left-0 w-[300px] sm:w-[500px] h-[120px] sm:h-[200px] text-[#181614] opacity-[0.10] sm:opacity-[0.14]"
         viewBox="0 0 400 160"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -110,9 +110,9 @@ export const ResearchVectorBackdrop: React.FC = () => {
         </g>
       </svg>
 
-      {/* Right Shore Torii Gate & Circuit Trace Lattice — ENHANCED */}
+      {/* Right Shore Torii Gate & Circuit Trace Lattice */}
       <svg
-        className="absolute bottom-4 right-4 w-[520px] h-[560px] text-[#181614] opacity-[0.20]"
+        className="absolute bottom-4 right-4 w-[280px] sm:w-[420px] md:w-[520px] h-[320px] sm:h-[460px] md:h-[560px] text-[#181614] opacity-[0.14] sm:opacity-[0.20]"
         viewBox="0 0 420 480"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -173,8 +173,8 @@ export const ResearchVectorBackdrop: React.FC = () => {
 export const ProjectsVectorBackdrop: React.FC = () => {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 select-none">
-      {/* Solitary Cliff Pine Artwork Watermark on the Right — BOOSTED PROMINENCE */}
-      <div className="absolute -top-6 right-0 w-[480px] sm:w-[620px] h-[820px] opacity-[0.30] sm:opacity-[0.38] mix-blend-multiply pointer-events-none">
+      {/* Solitary Cliff Pine Artwork Watermark on the Right */}
+      <div className="absolute -top-6 right-0 w-[280px] sm:w-[480px] md:w-[620px] h-[480px] sm:h-[820px] opacity-[0.20] sm:opacity-[0.38] mix-blend-multiply dark:mix-blend-screen dark:opacity-[0.14] pointer-events-none">
         <picture className="block w-full h-full">
           <source srcSet="/wabi-sabi-pine.avif" type="image/avif" />
           <source srcSet="/wabi-sabi-pine.webp" type="image/webp" />
@@ -200,9 +200,9 @@ export const ProjectsVectorBackdrop: React.FC = () => {
         <div className="w-[1.5px] h-16 bg-[#181614]/30" />
       </div>
 
-      {/* Traditional Asanoha Hemp Leaf Geometric Wireframe Pattern — BOOSTED */}
+      {/* Traditional Asanoha Hemp Leaf Geometric Wireframe Pattern */}
       <svg
-        className="absolute top-16 left-1/4 w-[560px] h-[560px] text-[#181614] opacity-[0.18]"
+        className="absolute top-16 left-1/4 w-[300px] sm:w-[560px] h-[300px] sm:h-[560px] text-[#181614] opacity-[0.12] sm:opacity-[0.18]"
         viewBox="0 0 500 500"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -326,8 +326,8 @@ export const ProjectsVectorBackdrop: React.FC = () => {
 export const SkillsVectorBackdrop: React.FC = () => {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 select-none">
-      {/* Bamboo Grove Ink Painting Artwork Watermark on Left Flank — BOOSTED */}
-      <div className="absolute -top-6 -left-6 w-[450px] sm:w-[580px] h-[880px] opacity-[0.33] sm:opacity-[0.42] mix-blend-multiply pointer-events-none">
+      {/* Bamboo Grove Ink Painting Artwork Watermark on Left Flank */}
+      <div className="absolute -top-6 -left-6 w-[280px] sm:w-[450px] md:w-[580px] h-[520px] sm:h-[880px] opacity-[0.20] sm:opacity-[0.42] mix-blend-multiply dark:mix-blend-screen dark:opacity-[0.14] pointer-events-none">
         <picture className="block w-full h-full">
           <source srcSet="/wabi-sabi-bamboo.avif" type="image/avif" />
           <source srcSet="/wabi-sabi-bamboo.webp" type="image/webp" />
@@ -353,9 +353,9 @@ export const SkillsVectorBackdrop: React.FC = () => {
         <div className="w-[1.5px] h-16 bg-[#181614]/30" />
       </div>
 
-      {/* Large Zen Ensō Brush Circle in Center Background — BOOSTED */}
+      {/* Large Zen Ensō Brush Circle in Center Background */}
       <svg
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] text-[#181614] opacity-[0.13]"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[520px] md:w-[700px] h-[340px] sm:h-[520px] md:h-[700px] text-[#181614] opacity-[0.10] sm:opacity-[0.13]"
         viewBox="0 0 200 200"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -474,9 +474,9 @@ export const CredentialsVectorBackdrop: React.FC = () => {
         <ellipse cx="1100" cy="90" rx="350" ry="35" fill="#181614" opacity="0.35" />
       </svg>
 
-      {/* Concentric Seigaiha Waves on the Right Bottom — ENHANCED & EXTENDED */}
+      {/* Concentric Seigaiha Waves on the Right Bottom */}
       <svg
-        className="absolute bottom-4 right-0 w-[600px] h-[400px] text-[#181614] opacity-[0.20]"
+        className="absolute bottom-4 right-0 w-[300px] sm:w-[450px] md:w-[600px] h-[220px] sm:h-[300px] md:h-[400px] text-[#181614] opacity-[0.12] sm:opacity-[0.20]"
         viewBox="0 0 450 300"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

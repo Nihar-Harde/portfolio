@@ -38,7 +38,7 @@ export const ProjectsBentoSection: React.FC = () => {
   return (
     <section
       id="flagship-projects"
-      className="relative w-full py-24 sm:py-32 px-6 sm:px-12 md:px-20 bg-[#f6f3eb] dark:bg-[#121110] text-[#181614] dark:text-[#f5f2eb] overflow-hidden transition-colors duration-300"
+      className="relative w-full py-16 sm:py-24 md:py-32 px-4 sm:px-8 md:px-12 lg:px-20 bg-[#f6f3eb] dark:bg-[#121110] text-[#181614] dark:text-[#f5f2eb] overflow-hidden transition-colors duration-300"
     >
       {/* Sumi Divider Line */}
       <div className="sumi-divider absolute top-0 left-0" />
@@ -49,9 +49,9 @@ export const ProjectsBentoSection: React.FC = () => {
       </div>
 
       {/* Section Header */}
-      <div className="relative z-10 max-w-7xl mx-auto mb-12">
-        <div className="flex items-center gap-3 mb-3">
-          <span className="text-sm font-japanese text-[#c82b2b] dark:text-[#e03e3e] tracking-wider font-semibold">
+      <div className="relative z-10 max-w-7xl mx-auto mb-8 sm:mb-12">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3">
+          <span className="text-xs sm:text-sm font-japanese text-[#c82b2b] dark:text-[#e03e3e] tracking-wider font-semibold whitespace-nowrap">
             「旗艦プロジェクト」
           </span>
           <span className="h-[1px] w-8 bg-[#c82b2b]/40" />
@@ -59,18 +59,18 @@ export const ProjectsBentoSection: React.FC = () => {
             Engineering Workflows &amp; Systems
           </span>
         </div>
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6">
           <div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#181614] dark:text-[#f5f2eb] font-display">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#181614] dark:text-[#f5f2eb] font-display">
               Flagship Engineering Deployments
             </h2>
-            <p className="mt-2 text-base text-[#524d47] dark:text-[#b8b2a7] max-w-2xl leading-relaxed">
+            <p className="mt-2 text-sm sm:text-base text-[#524d47] dark:text-[#b8b2a7] max-w-2xl leading-relaxed">
               High-consequence pipelines engineered across autonomous agent loops, quantized edge vision, and distributed lakehouse architectures.
             </p>
           </div>
 
-          {/* Category Filter Pills (Minimalist Japanese Design) */}
-          <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-md bg-[#ede8de]/60 dark:bg-[#1e1c19] border border-[#181614]/10 dark:border-white/10 max-w-full">
+          {/* Category Filter Pills (Minimalist Japanese Design with smooth touch scroll on mobile) */}
+          <div className="flex items-center gap-1.5 p-1 rounded-lg bg-[#ede8de]/60 dark:bg-[#1e1c19] border border-[#181614]/10 dark:border-white/10 max-w-full overflow-x-auto no-scrollbar sm:flex-wrap">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -78,7 +78,7 @@ export const ProjectsBentoSection: React.FC = () => {
                   zenAudio.playWoodblock();
                   setSelectedCategory(cat);
                 }}
-                className={`px-3 py-1.5 rounded text-xs font-mono transition-all duration-200 ${
+                className={`px-3 py-1.5 rounded-md text-xs font-mono transition-all duration-200 whitespace-nowrap flex-shrink-0 ${
                   selectedCategory === cat
                     ? "bg-[#c82b2b] text-white shadow-sm font-medium"
                     : "text-[#524d47] dark:text-[#b8b2a7] hover:text-[#181614] dark:hover:text-[#f5f2eb] hover:bg-[#ede8de] dark:hover:bg-[#282522]"
@@ -138,13 +138,13 @@ export const ProjectsBentoSection: React.FC = () => {
                 </p>
 
                 {/* Quantitative Metrics Bar */}
-                <div className="grid grid-cols-3 gap-2 p-3 rounded-lg bg-[#ede8de]/60 dark:bg-[#201d1a] border border-[#181614]/10 dark:border-white/10 mb-6">
+                <div className="grid grid-cols-3 gap-1.5 sm:gap-2 p-2.5 sm:p-3 rounded-lg bg-[#ede8de]/60 dark:bg-[#201d1a] border border-[#181614]/10 dark:border-white/10 mb-5 sm:mb-6">
                   {project.metrics.map((metric, idx) => (
                     <div key={idx} className="text-center">
-                      <div className="text-sm sm:text-base font-mono font-semibold text-[#c82b2b] dark:text-[#ff4d4d]">
+                      <div className="text-xs sm:text-sm md:text-base font-mono font-semibold text-[#c82b2b] dark:text-[#ff4d4d]">
                         {metric.value}
                       </div>
-                      <div className="text-[10px] text-[#524d47] dark:text-[#b8b2a7] mt-0.5 font-mono truncate">
+                      <div className="text-[9px] sm:text-[10px] text-[#524d47] dark:text-[#b8b2a7] mt-0.5 font-mono truncate">
                         {metric.label}
                       </div>
                     </div>

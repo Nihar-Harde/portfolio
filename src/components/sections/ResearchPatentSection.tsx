@@ -23,7 +23,7 @@ export const ResearchPatentSection: React.FC = () => {
   return (
     <section
       id="research-patent"
-      className="relative w-full py-24 sm:py-32 px-6 sm:px-12 md:px-20 bg-[#f6f3eb] dark:bg-[#121110] text-[#181614] dark:text-[#f5f2eb] overflow-hidden transition-colors duration-300"
+      className="relative w-full py-16 sm:py-24 md:py-32 px-4 sm:px-8 md:px-12 lg:px-20 bg-[#f6f3eb] dark:bg-[#121110] text-[#181614] dark:text-[#f5f2eb] overflow-hidden transition-colors duration-300"
     >
       {/* Sumi Divider Line */}
       <div className="sumi-divider absolute top-0 left-0" />
@@ -34,9 +34,9 @@ export const ResearchPatentSection: React.FC = () => {
       </div>
 
       {/* Section Header */}
-      <div className="relative z-10 max-w-7xl mx-auto mb-16">
-        <div className="flex items-center gap-3 mb-3">
-          <span className="text-sm font-japanese text-[#c82b2b] dark:text-[#e03e3e] tracking-wider font-semibold">
+      <div className="relative z-10 max-w-7xl mx-auto mb-10 sm:mb-16">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3">
+          <span className="text-xs sm:text-sm font-japanese text-[#c82b2b] dark:text-[#e03e3e] tracking-wider font-semibold whitespace-nowrap">
             「研究と特許」
           </span>
           <span className="h-[1px] w-8 bg-[#c82b2b]/40" />
@@ -44,10 +44,10 @@ export const ResearchPatentSection: React.FC = () => {
             Discipline &amp; Intellectual Property
           </span>
         </div>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#181614] dark:text-[#f5f2eb] font-display">
+        <h2 className="text-2xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#181614] dark:text-[#f5f2eb] font-display">
           Patents and Peer-Reviewed Research
         </h2>
-        <p className="mt-2 text-base text-[#524d47] dark:text-[#b8b2a7] max-w-2xl leading-relaxed">
+        <p className="mt-2 text-sm sm:text-base text-[#524d47] dark:text-[#b8b2a7] max-w-2xl leading-relaxed">
           Original algorithmic research spanning GPU tensor logit interception and grounded legal retrieval-augmented generation.
         </p>
       </div>
@@ -83,18 +83,18 @@ export const ResearchPatentSection: React.FC = () => {
             </p>
 
             {/* LaTeX Mathematical Formula Card */}
-            <div className="rounded-lg bg-[#ede8de]/70 dark:bg-[#201d1a] p-4 border border-[#181614]/10 dark:border-white/10 mb-6">
-              <div className="flex items-center justify-between text-[11px] font-mono text-[#827b73] dark:text-[#9e978c] mb-2 pb-1 border-b border-[#181614]/10 dark:border-white/10">
+            <div className="rounded-lg bg-[#ede8de]/70 dark:bg-[#201d1a] p-3 sm:p-4 border border-[#181614]/10 dark:border-white/10 mb-6">
+              <div className="flex flex-wrap items-center justify-between gap-1 text-[10px] sm:text-[11px] font-mono text-[#827b73] dark:text-[#9e978c] mb-2 pb-1 border-b border-[#181614]/10 dark:border-white/10">
                 <span>GOVERNING DAMPING FORMULA (EDLD)</span>
                 <span className="text-[#c82b2b] dark:text-[#ff6b6b] font-medium">SHANNON ENTROPY SCALED</span>
               </div>
-              <div className="py-2 overflow-x-auto text-center">
+              <div className="py-2 overflow-x-auto text-center max-w-full">
                 <LatexRenderer
                   formula={patent.latexFormula}
-                  className="text-[#181614] dark:text-[#f5f2eb] text-sm sm:text-base"
+                  className="text-[#181614] dark:text-[#f5f2eb] text-xs sm:text-sm md:text-base"
                 />
               </div>
-              <p className="text-[11px] text-[#524d47] dark:text-[#d4cec3] mt-2 font-mono">
+              <p className="text-[10px] sm:text-[11px] text-[#524d47] dark:text-[#d4cec3] mt-2 font-mono">
                 Where H(Pt) is instantaneous sequence entropy, &tau; is temperature scale, and &Omega;(v, Ci) is contextual penalty.
               </p>
             </div>
@@ -105,7 +105,7 @@ export const ResearchPatentSection: React.FC = () => {
                 <span>THREE-STAGE REAL-TIME PIPELINE</span>
                 <span className="text-[#c82b2b] dark:text-[#ff6b6b]">SELECT STAGE TO INSPECT</span>
               </div>
-              <div className="grid grid-cols-3 gap-2 mb-3">
+              <div className="grid grid-cols-3 gap-1.5 sm:gap-2 mb-3">
                 {patent.pipelineStages.map((stage, idx) => (
                   <button
                     key={idx}
@@ -113,13 +113,13 @@ export const ResearchPatentSection: React.FC = () => {
                       zenAudio.playWoodblock();
                       setActiveStage(idx);
                     }}
-                    className={`py-2 px-1 text-center rounded-md font-mono text-xs transition-all duration-200 border ${
+                    className={`py-2 px-1 text-center rounded-md font-mono text-[10px] sm:text-xs transition-all duration-200 border ${
                       activeStage === idx
                         ? "bg-[#c82b2b] text-white border-[#c82b2b] shadow-sm font-medium"
                         : "bg-[#f6f3eb] dark:bg-[#282522] text-[#524d47] dark:text-[#d4cec3] border-[#181614]/10 dark:border-white/10 hover:border-[#c82b2b]/30"
                     }`}
                   >
-                    <span className="block text-[10px] opacity-75">S0{stage.step} ({stage.latency})</span>
+                    <span className="block text-[9px] sm:text-[10px] opacity-75">S0{stage.step} ({stage.latency})</span>
                     <span className="truncate block font-sans">{stage.title.split(" ")[0]}</span>
                   </button>
                 ))}
@@ -220,19 +220,19 @@ export const ResearchPatentSection: React.FC = () => {
                 <span>RAGAS BENCHMARK VERIFICATION</span>
                 <span className="text-[#8a681c] dark:text-[#e5be64]">ZERO HALLUCINATION GOAL</span>
               </div>
-              <div className="grid grid-cols-3 gap-2.5">
+              <div className="grid grid-cols-3 gap-1.5 sm:gap-2.5">
                 {researchPaper.metrics.map((metric, idx) => (
                   <div
                     key={idx}
-                    className="p-3 rounded-md bg-[#ede8de]/50 dark:bg-[#201d1a] border border-[#181614]/10 dark:border-white/10 text-center"
+                    className="p-2 sm:p-3 rounded-md bg-[#ede8de]/50 dark:bg-[#201d1a] border border-[#181614]/10 dark:border-white/10 text-center"
                   >
-                    <div className="text-lg font-mono font-semibold text-[#181614] dark:text-[#f5f2eb]">
+                    <div className="text-base sm:text-lg font-mono font-semibold text-[#181614] dark:text-[#f5f2eb]">
                       {metric.value}
                     </div>
-                    <div className="text-[10px] font-mono text-[#524d47] dark:text-[#b8b2a7] uppercase mt-0.5">
+                    <div className="text-[9px] sm:text-[10px] font-mono text-[#524d47] dark:text-[#b8b2a7] uppercase mt-0.5 truncate">
                       {metric.label}
                     </div>
-                    <div className="text-[9px] text-[#827b73] dark:text-[#9e978c] mt-1 font-mono">
+                    <div className="text-[8px] sm:text-[9px] text-[#827b73] dark:text-[#9e978c] mt-1 font-mono truncate">
                       {metric.benchmark}
                     </div>
                   </div>

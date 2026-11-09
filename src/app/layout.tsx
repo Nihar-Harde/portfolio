@@ -25,11 +25,11 @@ export const metadata: Metadata = {
   creator: "Nihar Atul Harde",
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico?v=hanko", sizes: "any" },
+      { url: "/icon.svg?v=hanko", type: "image/svg+xml" },
     ],
-    shortcut: "/favicon.ico",
-    apple: "/icon.svg",
+    shortcut: "/favicon.ico?v=hanko",
+    apple: "/icon.svg?v=hanko",
   },
   openGraph: {
     title: "Nihar Harde | Agentic AI & Edge Vision Engineer",
@@ -58,8 +58,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.ico?v=hanko" sizes="any" />
+        <link rel="icon" href="/icon.svg?v=hanko" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/icon.svg?v=hanko" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
